@@ -1,0 +1,63 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class ChangeScenesManager : MonoBehaviour
+{
+    [SerializeField] EntryTrigger[] transitions;
+    [SerializeField] Vector2SO sceneLocationSO_1;
+
+    static ChangeScenesManager _instance;
+    public static ChangeScenesManager Instance
+    {
+        get
+        {
+            if (_instance == null) _instance = FindObjectOfType<ChangeScenesManager>();
+            return _instance;
+        }
+    }
+
+    public void SetSceneLocation(Vector2 location)
+    {
+        switch (SceneManager.GetActiveScene().buildIndex)
+        {
+            case 0:
+                {
+                    Debug.Log("This should be the title sceen");
+                    break;
+                }
+            case 1:
+                {
+                    sceneLocationSO_1.Value = location;
+                    break;
+                }
+            default:
+                {
+                    Debug.Log("Invalid scene index");
+                    break;
+                }
+        }
+    }
+
+    public Vector2 GetSceneLocation()
+    {
+        switch (SceneManager.GetActiveScene().buildIndex)
+        {
+            case 0:
+                {
+                    Debug.Log("This should be the title sceen");
+                    return Vector2.zero;
+                }
+            case 1:
+                {
+                    return sceneLocationSO_1.Value;
+                }
+            default:
+                {
+                    Debug.Log("ChangeScenesManager current scene not setup for scene transitions");
+                    return Vector2.zero;
+                }
+        }
+    }
+}
