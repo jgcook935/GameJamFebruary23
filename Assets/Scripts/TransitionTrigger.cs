@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class EntryTrigger : MonoBehaviour
+public class TransitionTrigger : MonoBehaviour
 {
     [SerializeField] int sceneToSwitchToIndex;
     public Transform spawnTransform;

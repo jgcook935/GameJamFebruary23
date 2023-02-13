@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScenesManager : MonoBehaviour
 {
-    [SerializeField] EntryTrigger[] transitions;
+    [SerializeField] TransitionTrigger[] transitions;
     [SerializeField] Vector2SO sceneLocationSO_1;
+    [SerializeField] Vector2SO sceneLocationSO_2;
 
     static ChangeScenesManager _instance;
     public static ChangeScenesManager Instance
@@ -32,6 +33,11 @@ public class ChangeScenesManager : MonoBehaviour
                     sceneLocationSO_1.Value = location;
                     break;
                 }
+            case 2:
+                {
+                    sceneLocationSO_2.Value = location;
+                    break;
+                }
             default:
                 {
                     Debug.Log("Invalid scene index");
@@ -52,6 +58,10 @@ public class ChangeScenesManager : MonoBehaviour
             case 1:
                 {
                     return sceneLocationSO_1.Value;
+                }
+            case 2:
+                {
+                    return sceneLocationSO_2.Value;
                 }
             default:
                 {

@@ -24,6 +24,7 @@ public class CharacterManager : MonoBehaviour
     {
         cameraController = Instantiate(mainCameraPrefab, transform).GetComponent<CameraController>();
         player = Instantiate(playerPrefab, transform).GetComponent<PlayerMovement>();
+        cameraController.target = player.transform;
 
         var sceneLocation = ChangeScenesManager.Instance.GetSceneLocation();
         if (sceneLocation != Vector2.zero) player.transform.position = sceneLocation;
@@ -36,7 +37,6 @@ public class CharacterManager : MonoBehaviour
             player.animator.SetFloat("Horizontal", player.movement.x);
             player.animator.SetFloat("Vertical", player.movement.y);
             player.animator.SetFloat("Speed", player.movement.sqrMagnitude);
-            player.animator.SetBool("IsPlayerTwo", false);
         }
     }
 }
