@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -23,32 +24,31 @@ public class PlayerMovement : MonoBehaviour
 
     public Rigidbody2D rb;
     public Animator animator;
-    public Vector2 movement;
     public float moveSpeed = 10f;
+    private PlayerInput playerInput;
+    private PlayerInputs playerInputActions;
 
-    float tileScale = 1; //0.15f;
+    void Awake()
+    {
+        playerInput = GetComponent<PlayerInput>();
+        playerInputActions = new PlayerInputs();
+        playerInputActions.Player.Enable();
+    }
 
     void FixedUpdate()
     {
         if (!Enabled) return;
-
-        // handle movement
-        var totalMoveSpeed = moveSpeed;
-        var moveDirection = movement.normalized;
-        rb.velocity = new Vector2(moveDirection.x * totalMoveSpeed * tileScale, moveDirection.y * totalMoveSpeed * tileScale);
+        var moveDirection = playerInputActions.Player.Movement.ReadValue<Vector2>().normalized;
+        rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
     }
 
     void Update()
     {
         if (!Enabled) return;
-
-        // handle input
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-
-        animator.SetFloat("Horizontal", movement.x);
-        animator.SetFloat("Vertical", movement.y);
-        animator.SetFloat("Speed", movement.sqrMagnitude);
+        var moveDirection = playerInputActions.Player.Movement.ReadValue<Vector2>().normalized;
+        animator.SetFloat("Horizontal", moveDirection.x);
+        animator.SetFloat("Vertical", moveDirection.y);
+        animator.SetFloat("Speed", moveDirection.sqrMagnitude);
     }
 
     public void SetMovementEnabled(bool enabled)
