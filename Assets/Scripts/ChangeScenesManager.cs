@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEditor.FilePathAttribute;
 
 public class ChangeScenesManager : MonoBehaviour
 {
     [SerializeField] TransitionTrigger[] transitions;
     [SerializeField] Vector2SO sceneLocationSO_1;
     [SerializeField] Vector2SO sceneLocationSO_2;
+    [SerializeField] Vector2SO sceneLocationSO_3;
 
     static ChangeScenesManager _instance;
     public static ChangeScenesManager Instance
@@ -38,6 +40,11 @@ public class ChangeScenesManager : MonoBehaviour
                     sceneLocationSO_2.Value = location;
                     break;
                 }
+            case 3:
+                {
+                    sceneLocationSO_3.Value = location;
+                    break;
+                }
             default:
                 {
                     Debug.Log("Invalid scene index");
@@ -62,6 +69,10 @@ public class ChangeScenesManager : MonoBehaviour
             case 2:
                 {
                     return sceneLocationSO_2.Value;
+                }
+            case 3:
+                {
+                    return sceneLocationSO_3.Value;
                 }
             default:
                 {

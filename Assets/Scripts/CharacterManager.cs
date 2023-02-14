@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class CharacterManager : MonoBehaviour
 {
@@ -20,7 +21,12 @@ public class CharacterManager : MonoBehaviour
     private CameraController cameraController;
     private PlayerMovement player;
 
-    void Start()
+    public void SetControlsEnabled(bool enabled)
+    {
+        player.SetMovementEnabled(enabled);
+    }
+
+    void Awake()
     {
         cameraController = Instantiate(mainCameraPrefab, transform).GetComponent<CameraController>();
         player = Instantiate(playerPrefab, transform).GetComponent<PlayerMovement>();
