@@ -6,11 +6,11 @@ using static UnityEditor.FilePathAttribute;
 
 public class ChangeScenesManager : MonoBehaviour
 {
+    public IntSO previousSceneSO;
     [SerializeField] TransitionTrigger[] transitions;
     [SerializeField] Vector2SO sceneLocationSO_1;
     [SerializeField] Vector2SO sceneLocationSO_2;
     [SerializeField] Vector2SO sceneLocationSO_3;
-    [SerializeField] IntSO previousSceneSO;
 
     static ChangeScenesManager _instance;
     public static ChangeScenesManager Instance

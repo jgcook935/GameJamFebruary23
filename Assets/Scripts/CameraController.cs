@@ -46,7 +46,7 @@ public class CameraController : MonoBehaviour
 
         if (!snappedToTarget)
         {
-            transform.position = targetPosition;
+            transform.position = ChangeScenesManager.Instance.previousSceneIndex == 3 ? targetPositionClamped : targetPosition;
             snappedToTarget = true;
             return;
         }
