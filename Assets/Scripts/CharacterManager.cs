@@ -16,7 +16,6 @@ public class CharacterManager : MonoBehaviour
     }
 
     [SerializeField] GameObject playerPrefab;
-    [SerializeField] GameObject mainCameraPrefab;
     [SerializeField] PlayerConfigSO playerConfigSO;
 
     private CameraController cameraController;
@@ -29,10 +28,7 @@ public class CharacterManager : MonoBehaviour
 
     void Awake()
     {
-        cameraController = Instantiate(mainCameraPrefab, transform).GetComponent<CameraController>();
         player = Instantiate(playerPrefab, transform).GetComponent<PlayerMovement>();
-        cameraController.target = player.transform;
-
         if (playerConfigSO.Value == null)
         {
             // init the playerConfig with some default values
