@@ -18,19 +18,42 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    private float smoothing = 0.2f;
+    private float smoothing = 0.15f;
+    private bool snappedToTarget = false;
+
+    private Vector3 targetPosition
+    {
+        get
+        {
+            return new Vector3(target.position.x, target.position.y, transform.position.z);
+        }
+    }
+
+    private Vector3 targetPositionClamped
+    {
+        get
+        {
+            var tpc = targetPosition;
+            tpc.x = Mathf.Clamp(targetPosition.x, minPosition.x, maxPosition.x);
+            tpc.y = Mathf.Clamp(targetPosition.y, minPosition.y, maxPosition.y);
+            return tpc;
+        }
+    }
 
     void FixedUpdate()
     {
         if (target == null) target = PlayerMovement.Instance.transform;
+
+        if (!snappedToTarget)
+        {
+            transform.position = targetPosition;
+            snappedToTarget = true;
+            return;
+        }
+
         if (transform.position != target.position)
         {
-            var targetPosition = new Vector3(target.position.x, target.position.y, transform.position.z);
-
-            targetPosition.x = Mathf.Clamp(targetPosition.x, minPosition.x, maxPosition.x);
-            targetPosition.y = Mathf.Clamp(targetPosition.y, minPosition.y, maxPosition.y);
-
-            transform.position = Vector3.Lerp(transform.position, targetPosition, smoothing);
+            transform.position = Vector3.Lerp(transform.position, targetPositionClamped, smoothing);
         }
     }
 }
