@@ -1,9 +1,11 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public interface ISign
 {
     List<string> text { get; set; }
+    Action dialogCloseAction { get; set; }
 }
 
 public class Sign : MonoBehaviour, IClickable
@@ -17,6 +19,9 @@ public class Sign : MonoBehaviour, IClickable
         if (dialogBox != null) return;
 
         dialogBox = Instantiate(dialogBoxPrefab, transform);
-        dialogBox.GetComponent<DialogBoxController>().SetText(GetComponent<ISign>().text);
+        var controller = dialogBox.GetComponent<DialogBoxController>();
+        var sign = GetComponent<ISign>();
+        controller.SetText(sign.text);
+        controller.SetDialogCloseAction(sign.dialogCloseAction);
     }
 }

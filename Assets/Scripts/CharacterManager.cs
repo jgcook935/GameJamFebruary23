@@ -19,7 +19,7 @@ public class CharacterManager : MonoBehaviour
     [SerializeField] GameObject mainCameraPrefab;
 
     private CameraController cameraController;
-    private PlayerMovement player;
+    public PlayerMovement player;
 
     public void SetControlsEnabled(bool enabled)
     {

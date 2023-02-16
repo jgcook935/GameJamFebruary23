@@ -16,7 +16,6 @@ public class TransitionTrigger : MonoBehaviour
 
     void LoadScene()
     {
-        ChangeScenesManager.Instance.SetSceneLocation(spawnTransform.position);
-        SceneManager.LoadScene(sceneToSwitchToIndex);
+        ChangeScenesManager.Instance.LoadScene(spawnTransform.position, sceneToSwitchToIndex);
     }
 }

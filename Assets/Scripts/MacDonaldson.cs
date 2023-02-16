@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using System;
 
 public class MacDonaldson : MonoBehaviour, ISign
 {
@@ -12,21 +13,8 @@ public class MacDonaldson : MonoBehaviour, ISign
         "What do you wanna fight me or something?"
     };
 
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    ChangeScenesManager.Instance.SetSceneLocation(collision.transform.position);
-    //    SceneManager.LoadScene(3);
-    //}
-
-    // Start is called before the first frame update
-    void Start()
+    public Action dialogCloseAction { get; set; } = () =>
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        ChangeScenesManager.Instance.LoadScene(CharacterManager.Instance.player.transform.position, 3); // 3 is the arena scene
+    };
 }

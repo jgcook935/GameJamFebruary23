@@ -10,6 +10,7 @@ public class ChangeScenesManager : MonoBehaviour
     [SerializeField] Vector2SO sceneLocationSO_1;
     [SerializeField] Vector2SO sceneLocationSO_2;
     [SerializeField] Vector2SO sceneLocationSO_3;
+    [SerializeField] IntSO previousSceneSO;
 
     static ChangeScenesManager _instance;
     public static ChangeScenesManager Instance
@@ -21,7 +22,16 @@ public class ChangeScenesManager : MonoBehaviour
         }
     }
 
-    public void SetSceneLocation(Vector2 location)
+    public int previousSceneIndex { get => previousSceneSO.Value; }
+
+    public void LoadScene(Vector2 position, int sceneIndex)
+    {
+        previousSceneSO.Value = SceneManager.GetActiveScene().buildIndex;
+        SetSceneLocation(position);
+        SceneManager.LoadScene(sceneIndex);
+    }
+
+    private void SetSceneLocation(Vector2 location)
     {
         switch (SceneManager.GetActiveScene().buildIndex)
         {
