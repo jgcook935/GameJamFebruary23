@@ -16,10 +16,11 @@ public class CharacterManager : MonoBehaviour
     }
 
     [SerializeField] GameObject playerPrefab;
-    [SerializeField] PlayerConfigSO playerConfigSO;
+    [SerializeField] GameObject mainCameraPrefab;
 
     private CameraController cameraController;
     [HideInInspector] public PlayerMovement player;
+    public PlayerConfigSO playerConfigSO;
 
     public void SetControlsEnabled(bool enabled)
     {
@@ -42,12 +43,12 @@ public class CharacterManager : MonoBehaviour
                 name = "Skully",
                 abilities = new PlayerAbilities
                 {
-                    attacks = new Attack[2]
+                    Attacks = new Attack[2]
                     {
                         new Attack("Claw", 5),
                         null
                     },
-                    defenses = new Defense[2]
+                    Defenses = new Defense[2]
                     {
                         new Defense("Roll", 3),
                         null
@@ -55,12 +56,12 @@ public class CharacterManager : MonoBehaviour
                 },
                 inventory = new PlayerInventory
                 {
-                    healthBoosts = new HealthBoost[2]
+                    HealthBoosts = new HealthBoost[2]
                     {
                         null,
                         null
                     },
-                    weapons = new Weapon[2]
+                    Weapons = new Weapon[2]
                     {
                         null,
                         null

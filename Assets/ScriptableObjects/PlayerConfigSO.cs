@@ -40,9 +40,9 @@ public class PlayerConfig
     public string name { get; set; }
     public PlayerAbilities abilities { get; set; }
     public PlayerInventory inventory { get; set; }
-    // should this also have a field for current enemy? that way i wouldn't need SOs for each enemy, but could just
-    // pass it in when you accept a challenge, and clear it when you either win/lose/run...
-    // public Enemy currentEnemy { get; set; }
+
+    // we're going to set the current enemy before going into a battle and unset it when we leave
+    public PlayerConfig currentEnemy { get; set; }
 }
 
 /// <summary>
@@ -51,8 +51,8 @@ public class PlayerConfig
 public class PlayerInventory
 {
     // healthboosts and weapons are limited to 3 items so players will have to drop one to make room
-    public HealthBoost[] healthBoosts { get; set; } = new HealthBoost[2];
-    public Weapon[] weapons { get; set; } = new Weapon[2];
+    public HealthBoost[] HealthBoosts { get; set; } = new HealthBoost[2];
+    public Weapon[] Weapons { get; set; } = new Weapon[2];
 }
 
 /// <summary>
@@ -60,8 +60,8 @@ public class PlayerInventory
 /// </summary>
 public abstract class HealthBoost
 {
-    public string name { get; set; }
-    public int healthAmount { get; set; }
+    public string Name { get; set; }
+    public int HealthAmount { get; set; }
 }
 
 /// <summary>
@@ -69,8 +69,8 @@ public abstract class HealthBoost
 /// </summary>
 public abstract class Weapon
 {
-    public string name { get; set; }
-    public int damageAmount { get; set; }
+    public string Name { get; set; }
+    public int DamageAmount { get; set; }
 }
 
 /// <summary>
@@ -79,8 +79,8 @@ public abstract class Weapon
 public class PlayerAbilities
 {
     // attacks and defenses are limited to 3 items so players will have to drop one to make room
-    public Attack[] attacks { get; set; } = new Attack[2];
-    public Defense[] defenses { get; set; } = new Defense[2];
+    public Attack[] Attacks { get; set; } = new Attack[2];
+    public Defense[] Defenses { get; set; } = new Defense[2];
 }
 
 /// <summary>
