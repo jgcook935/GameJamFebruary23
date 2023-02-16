@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public Transform target;
+    public Vector2 minPosition;
+    public Vector2 maxPosition;
+    private Transform target;
 
     static CameraController _instance;
     public static CameraController Instance
@@ -16,8 +18,19 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    void Update()
+    private float smoothing = 0.2f;
+
+    void FixedUpdate()
     {
-        transform.position = new Vector3(target.transform.position.x, target.transform.position.y, transform.position.z);
+        if (target == null) target = PlayerMovement.Instance.transform;
+        if (transform.position != target.position)
+        {
+            var targetPosition = new Vector3(target.position.x, target.position.y, transform.position.z);
+
+            targetPosition.x = Mathf.Clamp(targetPosition.x, minPosition.x, maxPosition.x);
+            targetPosition.y = Mathf.Clamp(targetPosition.y, minPosition.y, maxPosition.y);
+
+            transform.position = Vector3.Lerp(transform.position, targetPosition, smoothing);
+        }
     }
 }
