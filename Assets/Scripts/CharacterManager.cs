@@ -17,9 +17,10 @@ public class CharacterManager : MonoBehaviour
 
     [SerializeField] GameObject playerPrefab;
     [SerializeField] GameObject mainCameraPrefab;
+    [SerializeField] PlayerConfigSO playerConfigSO;
 
     private CameraController cameraController;
-    public PlayerMovement player;
+    [HideInInspector] public PlayerMovement player;
 
     public void SetControlsEnabled(bool enabled)
     {
@@ -31,6 +32,51 @@ public class CharacterManager : MonoBehaviour
         cameraController = Instantiate(mainCameraPrefab, transform).GetComponent<CameraController>();
         player = Instantiate(playerPrefab, transform).GetComponent<PlayerMovement>();
         cameraController.target = player.transform;
+
+        if (playerConfigSO.Value == null)
+        {
+            // init the playerConfig with some default values
+            Debug.Log("PLAYER NOT INITIALIZED. LOADING DEFAULTS.");
+            playerConfigSO.Value = new PlayerConfig
+            {
+                currentHealth = 10f,
+                maxHealth = 10f,
+                speed = 1f,
+                level = 1,
+                name = "Skully",
+                abilities = new PlayerAbilities
+                {
+                    attacks = new Attack[2]
+                    {
+                        new Attack("Claw", 5),
+                        null
+                    },
+                    defenses = new Defense[2]
+                    {
+                        new Defense("Roll", 3),
+                        null
+                    }
+                },
+                inventory = new PlayerInventory
+                {
+                    healthBoosts = new HealthBoost[2]
+                    {
+                        null,
+                        null
+                    },
+                    weapons = new Weapon[2]
+                    {
+                        null,
+                        null
+                    }
+                }
+            };
+        }
+        else
+        {
+            // load any dependent stuff from the config SO
+            Debug.Log("PLAYER IS ALREADY INITIALIZED.");
+        }
 
         var sceneLocation = ChangeScenesManager.Instance.GetSceneLocation();
         if (sceneLocation != Vector2.zero) player.transform.position = sceneLocation;

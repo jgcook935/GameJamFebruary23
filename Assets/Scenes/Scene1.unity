@@ -3929,6 +3929,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CharacterManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6210952362227137077, guid: 77728c3113348f24cb96014fd95d4824, type: 3}
+      propertyPath: playerConfigSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 306f6529ad0eb484aaee681e61dbe1d3, type: 2}
     - target: {fileID: 7344667377708718617, guid: 77728c3113348f24cb96014fd95d4824, type: 3}
       propertyPath: m_RootOrder
       value: 2
