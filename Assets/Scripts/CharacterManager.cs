@@ -45,12 +45,20 @@ public class CharacterManager : MonoBehaviour
                 {
                     Attacks = new Attack[2]
                     {
-                        new Attack("Claw", 5),
+                        new Attack
+                        {
+                            Name = "Claw",
+                            DamageAmount = 5f
+                        },
                         null
                     },
                     Defenses = new Defense[2]
                     {
-                        new Defense("Roll", 3),
+                        new Defense
+                        {
+                            Name = "Roll",
+                            DefenseAmount = 3f
+                        },
                         null
                     }
                 },
@@ -58,7 +66,11 @@ public class CharacterManager : MonoBehaviour
                 {
                     HealthBoosts = new HealthBoost[2]
                     {
-                        null,
+                        new HealthBoost
+                        {
+                            Name = "Catnip",
+                            HealthAmount = 2f
+                        },
                         null
                     },
                     Weapons = new Weapon[2]

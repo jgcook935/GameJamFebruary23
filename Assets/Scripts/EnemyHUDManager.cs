@@ -15,10 +15,21 @@ public class EnemyHUDManager : MonoBehaviour
 
     void Awake()
     {
+        UpdateEnemyStats();
+        CombatManager.onEnemyDamaged += UpdateEnemyStats;
+    }
+
+    void OnDestroy()
+    {
+        CombatManager.onEnemyDamaged -= UpdateEnemyStats;
+    }
+
+    public void UpdateEnemyStats()
+    {
         NameText.text = CombatManager.EnemyName;
         LevelText.text = $"Lvl: {CombatManager.EnemyLevel.ToString()}";
-        CurrentHealthText.text = CombatManager.EnemyCurrentHealth.ToString();
+        CurrentHealthText.text = CombatManager.EnemyCurrentHealth < 0 ? "0" : CombatManager.EnemyCurrentHealth.ToString();
         MaxHealthText.text = CombatManager.EnemyMaxHealth.ToString();
-        HealthSlider.value = CombatManager.EnemyCurrentHealth;
+        HealthSlider.value = CombatManager.EnemyCurrentHealth < 0 ? 0 : CombatManager.EnemyCurrentHealth / 10f;
     }
 }

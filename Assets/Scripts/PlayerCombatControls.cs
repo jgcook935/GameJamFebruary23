@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerCombatControls : MonoBehaviour
 {
-    [SerializeField] ArenaCombatManager combatManager;
-
     public void Defend()
     {
         // we should show UI here to display what defenses the player has

@@ -58,19 +58,19 @@ public class PlayerInventory
 /// <summary>
 /// A positive item you'd find on the map and use to heal in combat.
 /// </summary>
-public abstract class HealthBoost
+public class HealthBoost
 {
     public string Name { get; set; }
-    public int HealthAmount { get; set; }
+    public float HealthAmount { get; set; }
 }
 
 /// <summary>
 /// A negative item you'd find on the map and use to damage an enemy in combat.
 /// </summary>
-public abstract class Weapon
+public class Weapon
 {
     public string Name { get; set; }
-    public int DamageAmount { get; set; }
+    public float DamageAmount { get; set; }
 }
 
 /// <summary>
@@ -88,14 +88,8 @@ public class PlayerAbilities
 /// </summary>
 public class Attack
 {
-    public Attack(string name, int damageAmount)
-    {
-        Name = name;
-        DamageAmount = damageAmount;
-    }
-
     public string Name { get; set; }
-    public int DamageAmount { get; set; }
+    public float DamageAmount { get; set; }
 }
 
 /// <summary>
@@ -103,12 +97,6 @@ public class Attack
 /// </summary>
 public class Defense
 {
-    public Defense(string name, int defenseAmount)
-    {
-        Name = name;
-        DefenseAmount = defenseAmount;
-    }
-
     public string Name { get; set; }
-    public int DefenseAmount { get; set; }
+    public float DefenseAmount { get; set; }
 }
