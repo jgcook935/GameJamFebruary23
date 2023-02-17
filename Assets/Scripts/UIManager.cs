@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
+        crossfade.gameObject.SetActive(true);
         crossfadeAnimator = crossfade.GetComponent<Animator>();
     }
 
@@ -29,17 +30,21 @@ public class UIManager : MonoBehaviour
 
     public IEnumerator TransitionToArena()
     {
+        AudioManager.Instance.LeaveOverWorld();
         crossfadeAnimator.SetTrigger("Start");
 
-        yield return new WaitForSeconds(2);
+        AudioManager.Instance.PlayTransitionTheme();
+
+        yield return new WaitForSeconds(2.857f);
 
         crossfadeAnimator.SetTrigger("End");
-        crossfadeAnimator.SetTrigger("Idle");
 
         CharacterManager.Instance.player.Enabled = false;
         ClickManager.Instance.SetClicksEnabled(false);
         arenaBackground.SetActive(true);
-        arenaCombatUI.SetActive(true);
+        arenaCombatUI.GetComponent<CanvasGroup>().alpha = 1;
+        arenaCombatUI.GetComponent<CanvasGroup>().interactable = true;
+        arenaCombatUI.GetComponent<CanvasGroup>().blocksRaycasts = true;
 
         AudioManager.Instance.TransitionToArena();
         ArenaCombatManager.Instance.StartBattle();
@@ -49,19 +54,25 @@ public class UIManager : MonoBehaviour
 
     public IEnumerator TransitionToOverworld()
     {
+        arenaCombatUI.GetComponent<CanvasGroup>().alpha = 0;
+        arenaCombatUI.GetComponent<CanvasGroup>().interactable = false;
+        arenaCombatUI.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        AudioManager.Instance.LeaveArena();
+
         crossfadeAnimator.SetTrigger("Start");
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3f);
 
         crossfadeAnimator.SetTrigger("End");
-        crossfadeAnimator.SetTrigger("Idle");
 
-        arenaCombatUI.SetActive(false);
-        AudioManager.Instance.TransitionToOverworld();
         arenaBackground.SetActive(false);
         ArenaCombatManager.Instance.EndBattle();
+
+        //yield return new WaitForSeconds(2);
+
         CharacterManager.Instance.player.Enabled = true;
         ClickManager.Instance.SetClicksEnabled(true);
+        AudioManager.Instance.TransitionToOverworld();
 
         yield return null;
     }
