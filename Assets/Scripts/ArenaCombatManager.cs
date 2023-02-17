@@ -15,7 +15,7 @@ public class DefenseConfig
 public class ArenaCombatManager : MonoBehaviour
 {
     [SerializeField] PlayerConfigSO playerConfig;
-    [SerializeField] GameObject resultText;
+    [SerializeField] GameObject actionText;
     [SerializeField] GameObject playerControls;
 
     public Action onEnemyHealthChanged;
@@ -110,16 +110,17 @@ public class ArenaCombatManager : MonoBehaviour
         }
         else
         {
+            TogglePlayerControls(false);
             PassToEnemy();
         }
     }
 
-    public void DamagePlayer(float damage)
+    public void DamagePlayer(Attack attack)
     {
-        var actualDamage = damage;
+        var actualDamage = attack.DamageAmount;
         if (playerDefenseConfig != null && playerDefenseConfig.isEnabled)
         {
-            actualDamage = playerDefenseConfig.defenseAmount >= damage ? 0 : damage - playerDefenseConfig.defenseAmount;
+            actualDamage = playerDefenseConfig.defenseAmount >= attack.DamageAmount ? 0 : attack.DamageAmount - playerDefenseConfig.defenseAmount;
             playerDefenseConfig = null;
         }
         // use the damage amount to lower the player's current health
@@ -131,39 +132,44 @@ public class ArenaCombatManager : MonoBehaviour
         var message = "";
         if (actualDamage == 0)
         {
-            message = $"UMM, OKAY... You weren't even phased by that attack.";
+            message = $"{EnemyName} used {attack.Name}. It wasn't very effective.";
         }
         else if (actualDamage > 0 && actualDamage < 5)
         {
-            message = $"THAT'S GONNA HURT IN THE MORNING! You took {actualDamage} damage.";
+            message = $"{EnemyName} used {attack.Name}. You took {actualDamage} damage.";
         }
         else if (actualDamage >= 5)
         {
-            message = $"THEY'RE SO STRONG! YOU HAVE BEEN DAMAGED BY {actualDamage} HEALTH POINTS!!!";
+            message = $"{EnemyName} used {attack.Name}. OOF - You took {actualDamage} damage.";
         }
 
         // show a message to the player that they hit the enemy
         Debug.Log(message);
 
-        // do a check to see if they're defeated or not
-        if (playerConfig.Value.currentHealth <= 0)
+        Action followAction = () =>
         {
-            Debug.Log($"Shucks, you've been defeated. Better luck next time.");            
-            StartCoroutine(OnDefeat());
-        }
-        else
-        {
-            StartCoroutine(PlayerWaitBeforeAction());
-            TogglePlayerControls(true);
-        }
+            // do a check to see if they're defeated or not
+            if (playerConfig.Value.currentHealth <= 0)
+            {
+                Debug.Log($"Shucks, you've been defeated. Better luck next time.");
+                StartCoroutine(OnDefeat());
+            }
+            else
+            {
+                StartCoroutine(PlayerWaitBeforeAction());
+                TogglePlayerControls(true);
+            }
+        };
+
+        StartCoroutine(ShowActionText(message, Color.black, 3, followAction));
     }
 
-    public void DamageEnemy(float damage)
+    public void DamageEnemy(Attack attack)
     {
-        var actualDamage = damage;
+        var actualDamage = attack.DamageAmount;
         if (enemyDefenseConfig != null && enemyDefenseConfig.isEnabled)
         {
-            actualDamage = enemyDefenseConfig.defenseAmount >= damage ? 0 : damage - enemyDefenseConfig.defenseAmount;
+            actualDamage = enemyDefenseConfig.defenseAmount >= attack.DamageAmount ? 0 : attack.DamageAmount - enemyDefenseConfig.defenseAmount;
             enemyDefenseConfig = null;
         }
         // use the damage amount to lower the enemy's current health
@@ -175,103 +181,142 @@ public class ArenaCombatManager : MonoBehaviour
         var message = "";
         if (actualDamage == 0)
         {
-            message = $"WOW, THAT DIDN'T DO MUCH... {EnemyName} wasn't even phased by that attack.";
+            message = $"{PlayerName} used {attack.Name}. {EnemyName} wasn't even phased.";
         }
         else if (actualDamage > 0 && actualDamage < 5)
         {
-            message = $"DANG, WHAT A HIT! {EnemyName} took {actualDamage} damage!";
+            message = $"{PlayerName} used {attack.Name}. {EnemyName} took {actualDamage} damage. What a hit!";
         }
         else if (actualDamage >= 5)
         {
-            message = $"SWEET ATTACK! {EnemyName} HAS BEEN DAMAGED BY {actualDamage} health points!!!";
+            message = $"{PlayerName} used {attack.Name}. {EnemyName} took {actualDamage} damage. They're shook!";
         }
 
         // show a message to the player that they hit the enemy
         Debug.Log(message);
 
-        // do a check to see if they're defeated or not
-        if (playerConfig.Value.currentEnemy.currentHealth <= 0)
+        TogglePlayerControls(false);
+
+        Action followAction = () =>
         {
-            Debug.Log($"{EnemyName} has been defeated!");
-            StartCoroutine(OnVictory());
-        }
-        else
-        {
-            PassToEnemy();
-        }
+            // do a check to see if they're defeated or not
+            if (playerConfig.Value.currentEnemy.currentHealth <= 0)
+            {
+                Debug.Log($"{EnemyName} has been defeated!");
+                StartCoroutine(OnVictory());
+            }
+            else
+            {
+                PassToEnemy();
+            }
+        };
+
+        StartCoroutine(ShowActionText(message, Color.black, 3, followAction));
     }
 
-    public void HealPlayer(float health)
+    public void HealPlayer(HealthBoost healthBoost)
     {
-        if (playerConfig.Value.currentHealth + health > playerConfig.Value.maxHealth)
+        if (playerConfig.Value.currentHealth + healthBoost.HealthAmount > playerConfig.Value.maxHealth)
         {
             playerConfig.Value.currentHealth = playerConfig.Value.maxHealth;
         }
         else
         {
-            playerConfig.Value.currentHealth += health;
+            playerConfig.Value.currentHealth += healthBoost.HealthAmount;
         }
         onPlayerHealthChanged?.Invoke();
-        Debug.Log($"PLAYER HEALED BY {health} hit points");
-        PassToEnemy();
+        var message = $"{PlayerName} used {healthBoost.Name} to heal for {healthBoost.HealthAmount} health points.";
+        Debug.Log(message);
+
+        TogglePlayerControls(false);
+
+        Action followAction = () =>
+        {
+            PassToEnemy();
+        };
+
+        StartCoroutine(ShowActionText(message, Color.black, 3, followAction));
     }
 
-    public void HealEnemy(float health)
+    public void HealEnemy(HealthBoost healthBoost)
     {
-        if (playerConfig.Value.currentEnemy.currentHealth + health > playerConfig.Value.currentEnemy.maxHealth)
+        if (playerConfig.Value.currentEnemy.currentHealth + healthBoost.HealthAmount > playerConfig.Value.currentEnemy.maxHealth)
         {
             playerConfig.Value.currentEnemy.currentHealth = playerConfig.Value.currentEnemy.maxHealth;
         }
         else
         {
-            playerConfig.Value.currentEnemy.currentHealth += health;
+            playerConfig.Value.currentEnemy.currentHealth += healthBoost.HealthAmount;
         }
         onEnemyHealthChanged?.Invoke();
-        Debug.Log($"ENEMY HEALED BY {health} hit points");
-        PassToPlayer();
+        var message = $"{EnemyName} used {healthBoost.Name} to heal for {healthBoost.HealthAmount} health points.";
+        Debug.Log(message);
+
+        Action followAction = () =>
+        {
+            PassToPlayer();
+        };
+
+        StartCoroutine(ShowActionText(message, Color.black, 3, followAction));
     }
 
-    public void SetPlayerDefense(float defense)
+    public void SetPlayerDefense(Defense defense)
     {
         playerDefenseConfig = new DefenseConfig
         {
             isEnabled = true,
-            defenseAmount = defense
+            defenseAmount = defense.DefenseAmount
         };
-        Debug.Log($"PLAYER SHIELDED WITH {defense} hit points");
-        PassToEnemy();
+        var message = $"{PlayerName} used {defense.Name} to shield for {defense.DefenseAmount} hit points.";
+        Debug.Log(message);
+
+        TogglePlayerControls(false);
+
+        Action followAction = () =>
+        {
+            PassToEnemy();
+        };
+
+        StartCoroutine(ShowActionText(message, Color.black, 3, followAction));
     }
 
-    public void SetEnemyDefense(float defense)
+    public void SetEnemyDefense(Defense defense)
     {
         enemyDefenseConfig = new DefenseConfig
         {
             isEnabled = true,
-            defenseAmount = defense
+            defenseAmount = defense.DefenseAmount
         };
-        Debug.Log($"ENEMY SHIELDED WITH {defense} hit points");
-        PassToPlayer();
+        var message = $"{EnemyName} used {defense.Name} to shield for {defense.DefenseAmount} hit points.";
+        Debug.Log(message);
+
+        Action followAction = () =>
+        {
+            PassToPlayer();
+        };
+
+        StartCoroutine(ShowActionText(message, Color.black, 3, followAction));
     }
 
     IEnumerator PlayerWaitBeforeAction()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
     }
 
     IEnumerator OnEnemyTurn()
     {
         Debug.Log("ENEMY'S TURN TO ATTACK...");
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
         var actionChooser = UnityEngine.Random.Range(0, 31);
         if (actionChooser <= 10)
         {
             Debug.Log($"THE ACTION CHOOSER CHOSE TO DAMAGE BECAUSE THE VALUE WAS {actionChooser}");
-            DamagePlayer(playerConfig.Value.currentEnemy.abilities.Attacks[0].DamageAmount);
+            DamagePlayer(playerConfig.Value.currentEnemy.abilities.Attacks[0]);
         }
         else if (actionChooser <= 20)
         {
             Debug.Log($"THE ACTION CHOOSER CHOSE TO DEFEND BECAUSE THE VALUE WAS {actionChooser}");
-            SetEnemyDefense(playerConfig.Value.currentEnemy.abilities.Defenses[0].DefenseAmount);
+            SetEnemyDefense(playerConfig.Value.currentEnemy.abilities.Defenses[0]);
         }
         else
         {
@@ -281,18 +326,18 @@ public class ArenaCombatManager : MonoBehaviour
                 if (actionChooserTieBreaker <= 10)
                 {
                     Debug.Log($"THE TIE BREAKER ACTION CHOOSER CHOSE TO DAMAGE BECAUSE THE VALUE WAS {actionChooserTieBreaker}");
-                    DamagePlayer(playerConfig.Value.currentEnemy.abilities.Attacks[0].DamageAmount);
+                    DamagePlayer(playerConfig.Value.currentEnemy.abilities.Attacks[0]);
                 }
                 else
                 {
                     Debug.Log($"THE TIE BREAKER ACTION CHOOSER CHOSE TO DEFEND BECAUSE THE VALUE WAS {actionChooserTieBreaker}");
-                    SetEnemyDefense(playerConfig.Value.currentEnemy.abilities.Defenses[0].DefenseAmount);
+                    SetEnemyDefense(playerConfig.Value.currentEnemy.abilities.Defenses[0]);
                 }
             }
             else
             {
                 Debug.Log($"THE ACTION CHOOSER CHOSE TO HEAL BECAUSE THE VALUE WAS {actionChooser}");
-                HealEnemy(playerConfig.Value.currentEnemy.inventory.HealthBoosts[0].HealthAmount);
+                HealEnemy(playerConfig.Value.currentEnemy.inventory.HealthBoosts[0]);
             }
         }
         yield return null;
@@ -300,10 +345,7 @@ public class ArenaCombatManager : MonoBehaviour
 
     IEnumerator OnVictory()
     {
-        var text = resultText.GetComponent<TMP_Text>();
-        text.text = "VICTORY";
-        text.color = Color.green;
-        resultText.gameObject.SetActive(true);
+        ShowText("VICTORY", Color.green); // TODO make this green not so shitty
         TogglePlayerControls(false);
         // play some sort of victory sound
         yield return new WaitForSeconds(3);
@@ -312,10 +354,7 @@ public class ArenaCombatManager : MonoBehaviour
 
     IEnumerator OnDefeat()
     {
-        var text = resultText.GetComponent<TMP_Text>();
-        text.text = "DEFEAT";
-        text.color = Color.red;
-        resultText.gameObject.SetActive(true);
+        ShowText("DEFEAT", Color.red);
         TogglePlayerControls(false);
         // play some sort of defeat sound
         yield return new WaitForSeconds(3);
@@ -323,20 +362,48 @@ public class ArenaCombatManager : MonoBehaviour
         SceneManager.LoadScene(ChangeScenesManager.Instance.previousSceneIndex);
     }
 
+    IEnumerator ShowActionText(string message, Color color, int waitSeconds, Action followAction)
+    {
+        ShowText(message, color);
+        yield return new WaitForSeconds(waitSeconds);
+        actionText.gameObject.SetActive(false);
+        followAction.Invoke();
+    }
+
     private void PassToEnemy()
     {
-        TogglePlayerControls(false);
-        StartCoroutine(OnEnemyTurn());
+        //TogglePlayerControls(false); // doing this earlier so people can't spam... they're gonna try
+        Action followAction = () =>
+        {
+            StartCoroutine(OnEnemyTurn());
+        };
+
+        StartCoroutine(ShowActionText($"It's {EnemyName}'s turn to take action", Color.gray, 2, followAction));
     }
 
     private void PassToPlayer()
     {
         StartCoroutine(PlayerWaitBeforeAction());
-        TogglePlayerControls(true);
+
+        Action followAction = () =>
+        {
+            TogglePlayerControls(true);
+        };
+
+        StartCoroutine(ShowActionText($"It's {PlayerName}'s turn to take action", Color.gray, 2, followAction));
+    }
+
+    private void ShowText(string message, Color color)
+    {
+        var text = actionText.GetComponent<TMP_Text>();
+        text.text = message;
+        text.color = color;
+        actionText.gameObject.SetActive(true);
     }
 
     private void TogglePlayerControls(bool isActive)
     {
+        playerControls.gameObject.SetActive(true);
         foreach (Transform child in playerControls.transform)
         {
             child.gameObject.SetActive(isActive);

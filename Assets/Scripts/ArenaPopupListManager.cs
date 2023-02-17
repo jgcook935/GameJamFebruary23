@@ -31,7 +31,7 @@ public class ArenaPopupListManager : MonoBehaviour
             if (attack == null) continue;
             var button = GameObject.Instantiate(ButtonPrefab, transform);
             button.GetComponentInChildren<TMP_Text>().text = attack.Name;
-            button.GetComponent<Button>().onClick.AddListener(() => CombatManager.DamageEnemy(attack.DamageAmount));
+            button.GetComponent<Button>().onClick.AddListener(() => CombatManager.DamageEnemy(attack));
             button.GetComponent<Button>().onClick.AddListener(() => this.ClearButtonsOnAction());
             button.GetComponent<Button>().onClick.AddListener(() => this.HideOnAction());
             buttons.Add(button);
@@ -45,7 +45,7 @@ public class ArenaPopupListManager : MonoBehaviour
             if (defense == null) continue;
             var button = GameObject.Instantiate(ButtonPrefab, transform);
             button.GetComponentInChildren<TMP_Text>().text = defense.Name;
-            button.GetComponent<Button>().onClick.AddListener(() => CombatManager.SetPlayerDefense(defense.DefenseAmount));
+            button.GetComponent<Button>().onClick.AddListener(() => CombatManager.SetPlayerDefense(defense));
             button.GetComponent<Button>().onClick.AddListener(() => this.ClearButtonsOnAction());
             button.GetComponent<Button>().onClick.AddListener(() => this.HideOnAction());
             buttons.Add(button);
@@ -59,7 +59,7 @@ public class ArenaPopupListManager : MonoBehaviour
             if (healthBoost == null) continue;
             var button = GameObject.Instantiate(ButtonPrefab, transform);
             button.GetComponentInChildren<TMP_Text>().text = healthBoost.Name;
-            button.GetComponent<Button>().onClick.AddListener(() => CombatManager.HealPlayer(healthBoost.HealthAmount));
+            button.GetComponent<Button>().onClick.AddListener(() => CombatManager.HealPlayer(healthBoost));
             button.GetComponent<Button>().onClick.AddListener(() => this.ClearButtonsOnAction());
             button.GetComponent<Button>().onClick.AddListener(() => this.HideOnAction());
             buttons.Add(button);
