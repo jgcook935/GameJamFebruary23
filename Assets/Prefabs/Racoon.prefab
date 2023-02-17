@@ -13,9 +13,8 @@ GameObject:
   - component: {fileID: 5665976625247048239}
   - component: {fileID: 5665976625247048238}
   - component: {fileID: 5665976625247048241}
-  - component: {fileID: 935375191269613721}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Racoon
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 5546671543968653177, guid: 7607e570e0cade641ad63bd0fc850438, type: 3}
+  m_Sprite: {fileID: 5546671543968653177, guid: d1c35d53d83211349aee3a6c2e5566ce, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -120,7 +119,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.05}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -131,7 +130,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.1}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!95 &5665976625247048241
 Animator:
@@ -143,7 +142,7 @@ Animator:
   m_GameObject: {fileID: 5665976625247048240}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 256deca893aa64c41a58b75ef4d9a849, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2c2898d7f408f694d888cbb35171a383, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -152,18 +151,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &935375191269613721
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5665976625247048240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: affd8abefec0d0e4c8f97bc2eff03875, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 5665976625247048239}
-  animator: {fileID: 5665976625247048241}
-  moveSpeed: 5
