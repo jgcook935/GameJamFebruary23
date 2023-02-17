@@ -17,6 +17,8 @@ public class ArenaCombatManager : MonoBehaviour
     [SerializeField] PlayerConfigSO playerConfig;
     [SerializeField] GameObject actionText;
     [SerializeField] GameObject playerControls;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip battleMusic;
 
     public Action onEnemyHealthChanged;
     public Action onPlayerHealthChanged;
@@ -104,6 +106,9 @@ public class ArenaCombatManager : MonoBehaviour
 
     void Awake()
     {
+        audioSource.clip = battleMusic;
+        audioSource.Play();
+
         if (PlayerSpeed >= EnemySpeed)
         {
             PassToPlayer();
@@ -113,6 +118,11 @@ public class ArenaCombatManager : MonoBehaviour
             TogglePlayerControls(false);
             PassToEnemy();
         }
+    }
+
+    void OnDestroy()
+    {
+        audioSource.Stop();
     }
 
     public void DamagePlayer(Attack attack)
