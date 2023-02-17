@@ -9900,6 +9900,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   overWorldTheme: {fileID: 8300000, guid: e8542cdc4d1fa46d4b62e34fe84100f6, type: 3}
   arenaTheme: {fileID: 8300000, guid: 520112e98642748388540b4417bbfd9d, type: 3}
+  arenaThemeTransition: {fileID: 8300000, guid: 47d070e27305a4568b3e33c3b92dbcfe, type: 3}
 --- !u!82 &1396541263
 AudioSource:
   m_ObjectHideFlags: 0
