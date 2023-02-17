@@ -18,12 +18,11 @@ public class RacoonMoment : MonoBehaviour
 
     void Start()
     {
+        dialogueBox.SetActive(false);
         destinationSetter = GetComponentInParent<AIDestinationSetter>();
         if (racoonTalked.Value)
         {
             dialogueBox.SetActive(true);
-            GetComponentInParent<CircleCollider2D>().isTrigger = false;
-            GetComponentInParent<CircleCollider2D>().isTrigger = true;
         }
     }
 
