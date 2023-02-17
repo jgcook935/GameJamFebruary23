@@ -359,7 +359,7 @@ public class ArenaCombatManager : MonoBehaviour
         TogglePlayerControls(false);
         // play some sort of victory sound
         yield return new WaitForSeconds(3);
-        SceneManager.LoadScene(ChangeScenesManager.Instance.previousSceneIndex);
+        ChangeScenesManager.Instance.LoadScene(ChangeScenesManager.Instance.previousSceneIndex);
     }
 
     IEnumerator OnDefeat()
@@ -369,7 +369,7 @@ public class ArenaCombatManager : MonoBehaviour
         // play some sort of defeat sound
         yield return new WaitForSeconds(3);
         playerConfig.Value.currentHealth = 1f; // give them a little health to get to the next fight or find some health
-        SceneManager.LoadScene(ChangeScenesManager.Instance.previousSceneIndex);
+        ChangeScenesManager.Instance.LoadScene(ChangeScenesManager.Instance.previousSceneIndex);
     }
 
     IEnumerator ShowActionText(string message, Color color, int waitSeconds, Action followAction)

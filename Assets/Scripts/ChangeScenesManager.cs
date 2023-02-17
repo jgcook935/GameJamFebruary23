@@ -26,13 +26,18 @@ public class ChangeScenesManager : MonoBehaviour
 
     public int previousSceneIndex { get => previousSceneSO.Value; }
 
-    public void LoadScene(Vector2 position, int sceneIndex)
+    public void LoadScene(int sceneIndex)
     {
         previousSceneSO.Value = SceneManager.GetActiveScene().buildIndex;
-        previousSceneCameraBoundsMin.Value = new Vector2(CameraController.Instance.minPosition.x, CameraController.Instance.minPosition.y);
-        previousSceneCameraBoundsMax.Value = new Vector2(CameraController.Instance.maxPosition.x, CameraController.Instance.maxPosition.y);
-        SetSceneLocation(position);
+        if (CameraController.Instance != null) previousSceneCameraBoundsMin.Value = new Vector2(CameraController.Instance.minPosition.x, CameraController.Instance.minPosition.y);
+        if (CameraController.Instance != null) previousSceneCameraBoundsMax.Value = new Vector2(CameraController.Instance.maxPosition.x, CameraController.Instance.maxPosition.y);
         SceneManager.LoadScene(sceneIndex);
+    }
+
+    public void LoadScene(Vector2 position, int sceneIndex)
+    {
+        SetSceneLocation(position);
+        LoadScene(sceneIndex);
     }
 
     private void SetSceneLocation(Vector2 location)
