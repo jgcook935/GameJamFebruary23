@@ -16,12 +16,12 @@ public class HUDManager : MonoBehaviour
     void Awake()
     {
         UpdateStats();
-        CombatManager.onPlayerDamaged += UpdateStats;
+        CombatManager.onPlayerHealthChanged += UpdateStats;
     }
 
     void OnDestroy()
     {
-        CombatManager.onPlayerDamaged -= UpdateStats;    
+        CombatManager.onPlayerHealthChanged -= UpdateStats;    
     }
 
     public void UpdateStats()

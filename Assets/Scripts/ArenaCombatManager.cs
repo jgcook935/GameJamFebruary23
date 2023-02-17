@@ -18,8 +18,8 @@ public class ArenaCombatManager : MonoBehaviour
     [SerializeField] GameObject resultText;
     [SerializeField] GameObject playerControls;
 
-    public Action onEnemyDamaged;
-    public Action onPlayerDamaged;
+    public Action onEnemyHealthChanged;
+    public Action onPlayerHealthChanged;
 
     private DefenseConfig playerDefenseConfig;
     private DefenseConfig enemyDefenseConfig;
@@ -126,7 +126,7 @@ public class ArenaCombatManager : MonoBehaviour
         playerConfig.Value.currentHealth -= actualDamage;
 
         // update player stats on screen
-        onPlayerDamaged?.Invoke();
+        onPlayerHealthChanged?.Invoke();
 
         var message = "";
         if (actualDamage == 0)
@@ -170,7 +170,7 @@ public class ArenaCombatManager : MonoBehaviour
         playerConfig.Value.currentEnemy.currentHealth -= actualDamage;
 
         // update enemy stats on screen
-        onEnemyDamaged?.Invoke();
+        onEnemyHealthChanged?.Invoke();
 
         var message = "";
         if (actualDamage == 0)
@@ -211,6 +211,7 @@ public class ArenaCombatManager : MonoBehaviour
         {
             playerConfig.Value.currentHealth += health;
         }
+        onPlayerHealthChanged?.Invoke();
         Debug.Log($"PLAYER HEALED BY {health} hit points");
         PassToEnemy();
     }
@@ -225,7 +226,9 @@ public class ArenaCombatManager : MonoBehaviour
         {
             playerConfig.Value.currentEnemy.currentHealth += health;
         }
+        onEnemyHealthChanged?.Invoke();
         Debug.Log($"ENEMY HEALED BY {health} hit points");
+        PassToPlayer();
     }
 
     public void SetPlayerDefense(float defense)
@@ -272,8 +275,25 @@ public class ArenaCombatManager : MonoBehaviour
         }
         else
         {
-            Debug.Log($"THE ACTION CHOOSER CHOSE TO HEAL BECAUSE THE VALUE WAS {actionChooser}");
-            HealEnemy(playerConfig.Value.currentEnemy.inventory.HealthBoosts[0].HealthAmount);
+            if (playerConfig.Value.currentEnemy.currentHealth == playerConfig.Value.currentEnemy.maxHealth)
+            {
+                var actionChooserTieBreaker = UnityEngine.Random.Range(0, 21);
+                if (actionChooserTieBreaker <= 10)
+                {
+                    Debug.Log($"THE TIE BREAKER ACTION CHOOSER CHOSE TO DAMAGE BECAUSE THE VALUE WAS {actionChooserTieBreaker}");
+                    DamagePlayer(playerConfig.Value.currentEnemy.abilities.Attacks[0].DamageAmount);
+                }
+                else
+                {
+                    Debug.Log($"THE TIE BREAKER ACTION CHOOSER CHOSE TO DEFEND BECAUSE THE VALUE WAS {actionChooserTieBreaker}");
+                    SetEnemyDefense(playerConfig.Value.currentEnemy.abilities.Defenses[0].DefenseAmount);
+                }
+            }
+            else
+            {
+                Debug.Log($"THE ACTION CHOOSER CHOSE TO HEAL BECAUSE THE VALUE WAS {actionChooser}");
+                HealEnemy(playerConfig.Value.currentEnemy.inventory.HealthBoosts[0].HealthAmount);
+            }
         }
         yield return null;
     }
