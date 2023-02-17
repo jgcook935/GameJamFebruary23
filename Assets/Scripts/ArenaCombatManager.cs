@@ -370,7 +370,7 @@ public class ArenaCombatManager : MonoBehaviour
         TogglePlayerControls(false);
         // play some sort of victory sound
         yield return new WaitForSeconds(3);
-        UIManager.Instance.TransitionToOverworld();
+        StartCoroutine(UIManager.Instance.TransitionToOverworld());
     }
 
     IEnumerator OnDefeat()
@@ -380,7 +380,7 @@ public class ArenaCombatManager : MonoBehaviour
         // play some sort of defeat sound
         yield return new WaitForSeconds(3);
         playerConfig.Value.currentHealth = 1f; // give them a little health to get to the next fight or find some health
-        UIManager.Instance.TransitionToOverworld();
+        StartCoroutine(UIManager.Instance.TransitionToOverworld());
     }
 
     IEnumerator ShowActionText(string message, Color color, int waitSeconds, Action followAction)

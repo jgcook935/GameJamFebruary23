@@ -61,8 +61,11 @@ public class MacDonaldson : MonoBehaviour, ISign
                         null
                     }
             }
-        };
-
-        UIManager.Instance.TransitionToArena();
+        };        
     };
+
+    void Awake()
+    {
+        dialogCloseAction += () => StartCoroutine(UIManager.Instance.TransitionToArena());
+    }
 }

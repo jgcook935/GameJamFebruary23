@@ -26,6 +26,6 @@ public class PlayerCombatControls : MonoBehaviour
     public void Run()
     {
         Debug.Log("YOU CHOSE TO RUN... BITCH");
-        UIManager.Instance.TransitionToOverworld();
+        StartCoroutine(UIManager.Instance.TransitionToOverworld());
     }
 }

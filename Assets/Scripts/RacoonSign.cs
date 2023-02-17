@@ -60,7 +60,10 @@ public class RacoonSign : MonoBehaviour, ISign
                     }
             }
         };
-
-        UIManager.Instance.TransitionToArena();
     };
+
+    void Awake()
+    {
+        dialogCloseAction += () => StartCoroutine(UIManager.Instance.TransitionToArena());
+    }
 }

@@ -8,6 +8,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject arenaBackground;
     [SerializeField] GameObject tileGrid;
     [SerializeField] GameObject arenaCombatUI;
+    [SerializeField] GameObject crossfade;
+
+    private Animator crossfadeAnimator;
+
+    private void Awake()
+    {
+        crossfadeAnimator = crossfade.GetComponent<Animator>();
+    }
 
     static UIManager _instance;
     public static UIManager Instance
@@ -19,34 +27,42 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void TransitionToArena()
+    public IEnumerator TransitionToArena()
     {
-        Debug.Log("TRANSITIONING TO ARENA");
-        //CharacterManager.Instance.SetControlsEnabled(false);
+        crossfadeAnimator.SetTrigger("Start");
+
+        yield return new WaitForSeconds(2);
+
+        crossfadeAnimator.SetTrigger("End");
+        crossfadeAnimator.SetTrigger("Idle");
+
         CharacterManager.Instance.player.Enabled = false;
-        //mainBackground.SetActive(false);
-        //tileGrid.SetActive(false);
         ClickManager.Instance.SetClicksEnabled(false);
         arenaBackground.SetActive(true);
         arenaCombatUI.SetActive(true);
+
         AudioManager.Instance.TransitionToArena();
         ArenaCombatManager.Instance.StartBattle();
-        // play arena transition theme and animation
-        // play arena main theme
+
+        yield return null;
     }
 
-    public void TransitionToOverworld()
+    public IEnumerator TransitionToOverworld()
     {
-        Debug.Log("TRANSITIONING TO OVERWORLD");
-        AudioManager.Instance.TransitionToOverworld();
-        // play arena fade out animation
-        //tileGrid.SetActive(true);
-        //mainBackground.SetActive(true);
-        arenaBackground.SetActive(false);
+        crossfadeAnimator.SetTrigger("Start");
+
+        yield return new WaitForSeconds(2);
+
+        crossfadeAnimator.SetTrigger("End");
+        crossfadeAnimator.SetTrigger("Idle");
+
         arenaCombatUI.SetActive(false);
+        AudioManager.Instance.TransitionToOverworld();
+        arenaBackground.SetActive(false);
         ArenaCombatManager.Instance.EndBattle();
-        //CharacterManager.Instance.SetControlsEnabled(true);
         CharacterManager.Instance.player.Enabled = true;
         ClickManager.Instance.SetClicksEnabled(true);
+
+        yield return null;
     }
 }
