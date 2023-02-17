@@ -23,6 +23,7 @@ public class AudioManager : MonoBehaviour
     private void Awake()
     {
         source.clip = overWorldTheme;
+        source.volume = .6f;
         source.Play();
     }
 
@@ -36,6 +37,7 @@ public class AudioManager : MonoBehaviour
         overworldThemePlaybackhead = source.time;
         source.Stop();
         source.clip = arenaTheme;
+        source.volume = .25f;
         source.time = 0f;
         source.Play();
     }
@@ -44,6 +46,7 @@ public class AudioManager : MonoBehaviour
     {
         source.Stop();
         source.clip = overWorldTheme;
+        source.volume = .6f;
         source.time = overworldThemePlaybackhead;
         source.Play();
     }
