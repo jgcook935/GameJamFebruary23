@@ -17,14 +17,24 @@ public class ArenaCombatManager : MonoBehaviour
     [SerializeField] PlayerConfigSO playerConfig;
     [SerializeField] GameObject actionText;
     [SerializeField] GameObject playerControls;
-    [SerializeField] AudioSource audioSource;
-    [SerializeField] AudioClip battleMusic;
 
     public Action onEnemyHealthChanged;
     public Action onPlayerHealthChanged;
+    public Action onBattleStart;
+    public Action onBattleEnd;
 
     private DefenseConfig playerDefenseConfig;
     private DefenseConfig enemyDefenseConfig;
+
+    static ArenaCombatManager _instance;
+    public static ArenaCombatManager Instance
+    {
+        get
+        {
+            if (_instance == null) _instance = FindObjectOfType<ArenaCombatManager>();
+            return _instance;
+        }
+    }
 
     #region expose player stuff
 
@@ -104,11 +114,9 @@ public class ArenaCombatManager : MonoBehaviour
 
     #endregion
 
-    void Awake()
+    public void StartBattle()
     {
-        audioSource.clip = battleMusic;
-        audioSource.Play();
-
+        onBattleStart?.Invoke();
         if (PlayerSpeed >= EnemySpeed)
         {
             PassToPlayer();
@@ -118,11 +126,14 @@ public class ArenaCombatManager : MonoBehaviour
             TogglePlayerControls(false);
             PassToEnemy();
         }
+
+        Debug.Log("BATTLE STARTED. AHHH SHIT");
     }
 
-    void OnDestroy()
+    public void EndBattle()
     {
-        audioSource.Stop();
+        onBattleEnd?.Invoke();
+        Debug.Log("BATTLE ENDED. EVERYONE GO HOME");
     }
 
     public void DamagePlayer(Attack attack)
@@ -359,7 +370,7 @@ public class ArenaCombatManager : MonoBehaviour
         TogglePlayerControls(false);
         // play some sort of victory sound
         yield return new WaitForSeconds(3);
-        ChangeScenesManager.Instance.LoadScene(ChangeScenesManager.Instance.previousSceneIndex);
+        UIManager.Instance.TransitionToOverworld();
     }
 
     IEnumerator OnDefeat()
@@ -369,7 +380,7 @@ public class ArenaCombatManager : MonoBehaviour
         // play some sort of defeat sound
         yield return new WaitForSeconds(3);
         playerConfig.Value.currentHealth = 1f; // give them a little health to get to the next fight or find some health
-        ChangeScenesManager.Instance.LoadScene(ChangeScenesManager.Instance.previousSceneIndex);
+        UIManager.Instance.TransitionToOverworld();
     }
 
     IEnumerator ShowActionText(string message, Color color, int waitSeconds, Action followAction)

@@ -63,6 +63,6 @@ public class MacDonaldson : MonoBehaviour, ISign
             }
         };
 
-        ChangeScenesManager.Instance.LoadScene(CharacterManager.Instance.player.transform.position, 3); // 3 is the arena scene
+        UIManager.Instance.TransitionToArena();
     };
 }

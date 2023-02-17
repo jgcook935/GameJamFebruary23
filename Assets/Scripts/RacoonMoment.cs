@@ -33,6 +33,7 @@ public class RacoonMoment : MonoBehaviour
         if (aipath.reachedEndOfPath && !startedDialogue)
         {
             startedDialogue = true;
+            aipath.enabled = false;
             GetComponentInParent<Sign>().Click();
         }
     }

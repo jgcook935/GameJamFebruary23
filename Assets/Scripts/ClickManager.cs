@@ -3,14 +3,28 @@ using UnityEngine;
 public class ClickManager : MonoBehaviour
 {
     Camera mainCamera;
+    public bool clicksEnabled;
+
+    static ClickManager _instance;
+    public static ClickManager Instance
+    {
+        get
+        {
+            if (_instance == null) _instance = FindObjectOfType<ClickManager>();
+            return _instance;
+        }
+    }
 
     private void Start()
     {
+        clicksEnabled = true;
         mainCamera = CameraController.Instance.GetComponent<Camera>();
     }
 
     void Update()
     {
+        if (!clicksEnabled) return;
+
         if (Input.GetMouseButtonDown(1))
         {
             Vector2 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
@@ -40,5 +54,10 @@ public class ClickManager : MonoBehaviour
             //    UIManager.Instance.DoCursorDefault();
             //}
         }
+    }
+
+    public void SetClicksEnabled(bool enabled)
+    {
+        clicksEnabled = enabled;
     }
 }

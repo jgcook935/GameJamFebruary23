@@ -5,31 +5,35 @@ using UnityEngine.UI;
 
 public class HUDManager : MonoBehaviour
 {
-    [SerializeField] ArenaCombatManager CombatManager;
-
     [SerializeField] Text NameText;
     [SerializeField] Text LevelText;
     [SerializeField] Text CurrentHealthText;
     [SerializeField] Text MaxHealthText;
     [SerializeField] Slider HealthSlider;
 
-    void Awake()
+    private void Awake()
     {
-        UpdateStats();
-        CombatManager.onPlayerHealthChanged += UpdateStats;
+        ArenaCombatManager.Instance.onBattleStart += Init;
+        ArenaCombatManager.Instance.onBattleEnd += Dispose; // not sure if i even need this...
     }
 
-    void OnDestroy()
+    public void Init()
     {
-        CombatManager.onPlayerHealthChanged -= UpdateStats;    
+        UpdateStats();
+        ArenaCombatManager.Instance.onPlayerHealthChanged += UpdateStats;
+    }
+
+    public void Dispose()
+    {
+        ArenaCombatManager.Instance.onPlayerHealthChanged -= UpdateStats;
     }
 
     public void UpdateStats()
     {
-        NameText.text = CombatManager.PlayerName;
-        LevelText.text = $"Lvl: {CombatManager.PlayerLevel.ToString()}";
-        CurrentHealthText.text = CombatManager.PlayerCurrentHealth < 0 ? "0" : CombatManager.PlayerCurrentHealth.ToString();
-        MaxHealthText.text = CombatManager.PlayerMaxHealth.ToString();
-        HealthSlider.value = CombatManager.PlayerCurrentHealth < 0 ? 0 : CombatManager.PlayerCurrentHealth / 10f;
+        NameText.text = ArenaCombatManager.Instance.PlayerName;
+        LevelText.text = $"Lvl: {ArenaCombatManager.Instance.PlayerLevel.ToString()}";
+        CurrentHealthText.text = ArenaCombatManager.Instance.PlayerCurrentHealth < 0 ? "0" : ArenaCombatManager.Instance.PlayerCurrentHealth.ToString();
+        MaxHealthText.text = ArenaCombatManager.Instance.PlayerMaxHealth.ToString();
+        HealthSlider.value = ArenaCombatManager.Instance.PlayerCurrentHealth < 0 ? 0 : ArenaCombatManager.Instance.PlayerCurrentHealth / 10f;
     }
 }

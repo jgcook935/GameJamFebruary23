@@ -24,6 +24,7 @@ public class CharacterManager : MonoBehaviour
 
     public void SetControlsEnabled(bool enabled)
     {
+        Debug.Log($"SetMovementEnabled is now set to {enabled}");
         player.SetMovementEnabled(enabled);
     }
 

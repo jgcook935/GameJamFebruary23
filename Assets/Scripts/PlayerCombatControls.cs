@@ -26,9 +26,6 @@ public class PlayerCombatControls : MonoBehaviour
     public void Run()
     {
         Debug.Log("YOU CHOSE TO RUN... BITCH");
-        // could set enemy to null here, but we're going to overwrite it for every new battle anyway
-        var previousSceneIndex = ChangeScenesManager.Instance.previousSceneIndex;
-        ChangeScenesManager.Instance.previousSceneSO.Value = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(previousSceneIndex);
+        UIManager.Instance.TransitionToOverworld();
     }
 }

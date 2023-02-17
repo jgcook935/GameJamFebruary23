@@ -1,35 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class EnemyHUDManager : MonoBehaviour
 {
-    [SerializeField] ArenaCombatManager CombatManager;
-
     [SerializeField] Text NameText;
     [SerializeField] Text LevelText;
     [SerializeField] Text CurrentHealthText;
     [SerializeField] Text MaxHealthText;
     [SerializeField] Slider HealthSlider;
 
-    void Awake()
+    private void Awake()
     {
-        UpdateEnemyStats();
-        CombatManager.onEnemyHealthChanged += UpdateEnemyStats;
+        ArenaCombatManager.Instance.onBattleStart += Init;
+        ArenaCombatManager.Instance.onBattleEnd += Dispose; // not sure if i even need this...
     }
 
-    void OnDestroy()
+    public void Init()
     {
-        CombatManager.onEnemyHealthChanged -= UpdateEnemyStats;
+        UpdateEnemyStats();
+        ArenaCombatManager.Instance.onEnemyHealthChanged += UpdateEnemyStats;
+    }
+
+    public void Dispose()
+    {
+        ArenaCombatManager.Instance.onEnemyHealthChanged -= UpdateEnemyStats;
     }
 
     public void UpdateEnemyStats()
     {
-        NameText.text = CombatManager.EnemyName;
-        LevelText.text = $"Lvl: {CombatManager.EnemyLevel.ToString()}";
-        CurrentHealthText.text = CombatManager.EnemyCurrentHealth < 0 ? "0" : CombatManager.EnemyCurrentHealth.ToString();
-        MaxHealthText.text = CombatManager.EnemyMaxHealth.ToString();
-        HealthSlider.value = CombatManager.EnemyCurrentHealth < 0 ? 0 : CombatManager.EnemyCurrentHealth / 10f;
+        NameText.text = ArenaCombatManager.Instance.EnemyName;
+        LevelText.text = $"Lvl: {ArenaCombatManager.Instance.EnemyLevel.ToString()}";
+        CurrentHealthText.text = ArenaCombatManager.Instance.EnemyCurrentHealth < 0 ? "0" : ArenaCombatManager.Instance.EnemyCurrentHealth.ToString();
+        MaxHealthText.text = ArenaCombatManager.Instance.EnemyMaxHealth.ToString();
+        HealthSlider.value = ArenaCombatManager.Instance.EnemyCurrentHealth < 0 ? 0 : ArenaCombatManager.Instance.EnemyCurrentHealth / 10f;
     }
 }
