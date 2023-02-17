@@ -7,6 +7,8 @@ using static UnityEditor.FilePathAttribute;
 public class ChangeScenesManager : MonoBehaviour
 {
     public IntSO previousSceneSO;
+    public Vector2SO previousSceneCameraBoundsMin;
+    public Vector2SO previousSceneCameraBoundsMax;
     [SerializeField] TransitionTrigger[] transitions;
     [SerializeField] Vector2SO sceneLocationSO_1;
     [SerializeField] Vector2SO sceneLocationSO_2;
@@ -27,6 +29,8 @@ public class ChangeScenesManager : MonoBehaviour
     public void LoadScene(Vector2 position, int sceneIndex)
     {
         previousSceneSO.Value = SceneManager.GetActiveScene().buildIndex;
+        previousSceneCameraBoundsMin.Value = new Vector2(CameraController.Instance.minPosition.x, CameraController.Instance.minPosition.y);
+        previousSceneCameraBoundsMax.Value = new Vector2(CameraController.Instance.maxPosition.x, CameraController.Instance.maxPosition.y);
         SetSceneLocation(position);
         SceneManager.LoadScene(sceneIndex);
     }

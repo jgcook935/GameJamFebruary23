@@ -19,7 +19,14 @@ public class PlayerMovement : MonoBehaviour
     public bool Enabled
     {
         get { return _enabled; }
-        set { _enabled = value; }
+        set
+        {
+            rb.velocity = Vector2.zero;
+            animator.SetFloat("Horizontal", 0f);
+            animator.SetFloat("Vertical", 0f);
+            animator.SetFloat("Speed", 0f);
+            _enabled = value;
+        }
     }
 
     public Rigidbody2D rb;

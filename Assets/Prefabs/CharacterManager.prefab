@@ -47,6 +47,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 5665976625247048240, guid: 880ee0ab3c9e08a43bb93281c6ea0a01, type: 3}
   mainCameraPrefab: {fileID: 8348498308395410090, guid: 3ee4c685ecab95f44ac0f398bd323e7b, type: 3}
   player: {fileID: 0}
+  playerConfigSO: {fileID: 11400000, guid: 306f6529ad0eb484aaee681e61dbe1d3, type: 2}
 --- !u!114 &4219610377103535762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,9 +60,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 644495c970dfafa4b90180f3bf7304db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  previousSceneSO: {fileID: 11400000, guid: 49fb3674354354d469d31f62afd9902e, type: 2}
+  previousSceneCameraBoundsMin: {fileID: 11400000, guid: d8ba5084dbe48e7458a9b913ab1299d3, type: 2}
+  previousSceneCameraBoundsMax: {fileID: 11400000, guid: 481cefaa7e81f4c44b9be43a89cec9bd, type: 2}
   transitions:
   - {fileID: 0}
   sceneLocationSO_1: {fileID: 11400000, guid: 497b3999c11ba1347a3f9cba8f8538b7, type: 2}
   sceneLocationSO_2: {fileID: 11400000, guid: 3988a320e61c34d4a84116f9341bd3e1, type: 2}
   sceneLocationSO_3: {fileID: 11400000, guid: 5f2f41249198a4834a2a15f3f0ba41d6, type: 2}
-  previousSceneSO: {fileID: 11400000, guid: 49fb3674354354d469d31f62afd9902e, type: 2}

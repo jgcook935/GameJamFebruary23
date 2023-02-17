@@ -6,6 +6,9 @@ public class CameraController : MonoBehaviour
 {
     public Vector2 minPosition;
     public Vector2 maxPosition;
+    [SerializeField] private Vector2SO previousSceneCameraMin;
+    [SerializeField] private Vector2SO previousSceneCameraMax;
+
     private Transform target;
 
     static CameraController _instance;
@@ -37,6 +40,15 @@ public class CameraController : MonoBehaviour
             tpc.x = Mathf.Clamp(targetPosition.x, minPosition.x, maxPosition.x);
             tpc.y = Mathf.Clamp(targetPosition.y, minPosition.y, maxPosition.y);
             return tpc;
+        }
+    }
+
+    void Awake()
+    {
+        if (ChangeScenesManager.Instance.previousSceneIndex == 3)
+        {
+            minPosition = previousSceneCameraMin.Value;
+            maxPosition = previousSceneCameraMax.Value;
         }
     }
 
