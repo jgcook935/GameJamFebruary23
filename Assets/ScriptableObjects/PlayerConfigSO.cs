@@ -38,6 +38,7 @@ public class PlayerConfig
     public float speed { get; set; }
     public int level { get; set; }
     public string name { get; set; }
+    public Sprite sprite { get; set; }
     public PlayerAbilities abilities { get; set; }
     public PlayerInventory inventory { get; set; }
 

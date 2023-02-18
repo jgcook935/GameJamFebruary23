@@ -11,6 +11,7 @@ public class EnemyHUDManager : MonoBehaviour
     [SerializeField] Text CurrentHealthText;
     [SerializeField] Text MaxHealthText;
     [SerializeField] Slider HealthSlider;
+    [SerializeField] Image profileImage;
 
     private void Awake()
     {
@@ -31,6 +32,7 @@ public class EnemyHUDManager : MonoBehaviour
 
     public void UpdateEnemyStats()
     {
+        profileImage.sprite = ArenaCombatManager.Instance.EnemySprite;
         NameText.text = ArenaCombatManager.Instance.EnemyName;
         LevelText.text = $"Lvl: {ArenaCombatManager.Instance.EnemyLevel.ToString()}";
         CurrentHealthText.text = ArenaCombatManager.Instance.EnemyCurrentHealth < 0 ? "0" : ArenaCombatManager.Instance.EnemyCurrentHealth.ToString();

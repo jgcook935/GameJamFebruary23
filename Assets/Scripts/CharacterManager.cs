@@ -17,6 +17,7 @@ public class CharacterManager : MonoBehaviour
 
     [SerializeField] GameObject playerPrefab;
     [SerializeField] GameObject mainCameraPrefab;
+    [SerializeField] Sprite localSprite;
 
     private CameraController cameraController;
     [HideInInspector] public PlayerMovement player;
@@ -42,6 +43,7 @@ public class CharacterManager : MonoBehaviour
                 speed = 1f,
                 level = 1,
                 name = "Skully",
+                sprite = localSprite,
                 abilities = new PlayerAbilities
                 {
                     Attacks = new Attack[2]

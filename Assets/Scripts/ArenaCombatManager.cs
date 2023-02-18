@@ -63,6 +63,11 @@ public class ArenaCombatManager : MonoBehaviour
         get { return playerConfig.Value.name; }
     }
 
+    public Sprite PlayerSprite
+    {
+        get { return playerConfig.Value.sprite; }
+    }
+
     public PlayerAbilities PlayerAbilities
     {
         get { return playerConfig.Value.abilities; }
@@ -100,6 +105,11 @@ public class ArenaCombatManager : MonoBehaviour
     public string EnemyName
     {
         get { return playerConfig.Value.currentEnemy.name; }
+    }
+
+    public Sprite EnemySprite
+    {
+        get { return playerConfig.Value.currentEnemy.sprite; }
     }
 
     public PlayerAbilities EnemyAbilities
