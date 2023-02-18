@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] AudioClip[] footsteps;
+    private AudioSource source => GetComponent<AudioSource>();
+
     static PlayerMovement _instance;
     public static PlayerMovement Instance
     {
@@ -69,5 +72,11 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("Vertical", 0);
             animator.SetFloat("Speed", 0);
         }
+    }
+
+    public void PlayFootStep()
+    {
+        var random = Random.Range(0, 8);
+        source.PlayOneShot(footsteps[random]);
     }
 }
