@@ -14,7 +14,8 @@ public class FoodBowl : MonoBehaviour, ISign
 
     public Action dialogCloseAction { get; set; }
     public Action onFoodEatenAction;
-    //private PlayerConfig player;
+    private AudioSource source => GetComponent<AudioSource>();
+    [SerializeField] AudioClip bite;
 
     void Awake()
     {
@@ -31,7 +32,7 @@ public class FoodBowl : MonoBehaviour, ISign
         {
             Debug.Log("PLAYER HEALTH PLUS HEALTH BOOST IS MAX HEALTH, JUST MAXING OUT.");
             CharacterManager.Instance.playerConfigSO.Value.currentHealth = CharacterManager.Instance.playerConfigSO.Value.maxHealth;
-            // play a chomp sound
+            source.PlayOneShot(bite);
             onFoodEatenAction?.Invoke();
             OverworldHUDManager.Instance.UpdateStats();
             GameObject.Destroy(this.gameObject, 2f);
