@@ -18,7 +18,6 @@ public class FoodBowl : MonoBehaviour, ISign
 
     void Awake()
     {
-        
         dialogCloseAction += HealPlayer;
     }
 
@@ -34,6 +33,7 @@ public class FoodBowl : MonoBehaviour, ISign
             CharacterManager.Instance.playerConfigSO.Value.currentHealth = CharacterManager.Instance.playerConfigSO.Value.maxHealth;
             // play a chomp sound
             onFoodEatenAction?.Invoke();
+            OverworldHUDManager.Instance.UpdateStats();
             GameObject.Destroy(this.gameObject, 2f);
         }
         else
@@ -42,6 +42,7 @@ public class FoodBowl : MonoBehaviour, ISign
             CharacterManager.Instance.playerConfigSO.Value.currentHealth += healthBoost;
             // play a chomp sound
             onFoodEatenAction?.Invoke();
+            OverworldHUDManager.Instance.UpdateStats();
             GameObject.Destroy(this.gameObject, 2f);
         }
     }
