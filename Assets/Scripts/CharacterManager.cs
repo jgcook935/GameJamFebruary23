@@ -18,6 +18,7 @@ public class CharacterManager : MonoBehaviour
     [SerializeField] GameObject playerPrefab;
     [SerializeField] GameObject mainCameraPrefab;
     [SerializeField] Sprite localSprite;
+    [SerializeField] AudioClip[] localHurtSounds;
 
     private CameraController cameraController;
     [HideInInspector] public PlayerMovement player;
@@ -44,6 +45,7 @@ public class CharacterManager : MonoBehaviour
                 level = 1,
                 name = "Skully",
                 sprite = localSprite,
+                hurtSounds = localHurtSounds,
                 abilities = new PlayerAbilities
                 {
                     Attacks = new Attack[2]

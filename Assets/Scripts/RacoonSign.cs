@@ -6,6 +6,7 @@ using UnityEngine;
 public class RacoonSign : MonoBehaviour, ISign
 {
     [SerializeField] Sprite localSprite;
+    [SerializeField] AudioClip[] localHurtSounds;
 
     public List<string> text { get; set; } = new List<string>
     {
@@ -30,6 +31,7 @@ public class RacoonSign : MonoBehaviour, ISign
                 level = 1,
                 name = "Racoon",
                 sprite = localSprite,
+                hurtSounds = localHurtSounds,
                 abilities = new PlayerAbilities
                 {
                     Attacks = new Attack[2]

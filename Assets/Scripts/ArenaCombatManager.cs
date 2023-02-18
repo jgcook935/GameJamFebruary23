@@ -18,6 +18,8 @@ public class ArenaCombatManager : MonoBehaviour
     [SerializeField] GameObject actionText;
     [SerializeField] GameObject playerControls;
 
+    AudioSource source => GetComponent<AudioSource>();
+
     public Action onEnemyHealthChanged;
     public Action onPlayerHealthChanged;
     public Action onBattleStart;
@@ -160,6 +162,9 @@ public class ArenaCombatManager : MonoBehaviour
         // update player stats on screen
         onPlayerHealthChanged?.Invoke();
 
+        var random = UnityEngine.Random.Range(0, playerConfig.Value.hurtSounds.Length);
+        source.PlayOneShot(playerConfig.Value.hurtSounds[random]);
+
         var message = "";
         if (actualDamage == 0)
         {
@@ -208,6 +213,9 @@ public class ArenaCombatManager : MonoBehaviour
 
         // update enemy stats on screen
         onEnemyHealthChanged?.Invoke();
+
+        var random = UnityEngine.Random.Range(0, playerConfig.Value.currentEnemy.hurtSounds.Length);
+        source.PlayOneShot(playerConfig.Value.currentEnemy.hurtSounds[random]);
 
         var message = "";
         if (actualDamage == 0)

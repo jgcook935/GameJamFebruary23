@@ -7,6 +7,7 @@ using System;
 public class MacDonaldson : MonoBehaviour, ISign
 {
     [SerializeField] Sprite localSprite;
+    [SerializeField] AudioClip[] localHurtSounds;
 
     public List<string> text { get; set; } = new List<string>
     {
@@ -30,6 +31,7 @@ public class MacDonaldson : MonoBehaviour, ISign
                 level = 1,
                 name = "Mac Donaldson",
                 sprite = localSprite,
+                hurtSounds = localHurtSounds,
                 abilities = new PlayerAbilities
                 {
                     Attacks = new Attack[2]

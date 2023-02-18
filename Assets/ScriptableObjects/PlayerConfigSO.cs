@@ -39,6 +39,7 @@ public class PlayerConfig
     public int level { get; set; }
     public string name { get; set; }
     public Sprite sprite { get; set; }
+    public AudioClip[] hurtSounds { get; set; }
     public PlayerAbilities abilities { get; set; }
     public PlayerInventory inventory { get; set; }
 

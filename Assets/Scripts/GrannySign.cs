@@ -6,6 +6,7 @@ using UnityEngine;
 public class GrannySign : MonoBehaviour, ISign
 {
     [SerializeField] Sprite localSprite;
+    [SerializeField] AudioClip[] localHurtSounds;
 
     public List<string> text { get; set; } = new List<string>
     {
@@ -27,6 +28,7 @@ public class GrannySign : MonoBehaviour, ISign
                 level = 1,
                 name = "Granny",
                 sprite = localSprite,
+                hurtSounds = localHurtSounds,
                 abilities = new PlayerAbilities
                 {
                     Attacks = new Attack[2]
