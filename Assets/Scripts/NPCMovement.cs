@@ -7,6 +7,8 @@ public class NPCMovement : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private AIPath aipath;
+    [SerializeField] AudioClip[] footsteps;
+    private AudioSource source => GetComponent<AudioSource>();
 
     void Update()
     {
@@ -16,4 +18,9 @@ public class NPCMovement : MonoBehaviour
         animator.SetFloat("Speed", moveDirection.sqrMagnitude);
     }
 
+    public void PlayFootStep()
+    {
+        var random = Random.Range(0, 8);
+        source.PlayOneShot(footsteps[random]);
+    }
 }

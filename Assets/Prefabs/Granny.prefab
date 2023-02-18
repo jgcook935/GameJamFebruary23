@@ -116,13 +116,13 @@ GameObject:
   - component: {fileID: 2807100731114694769}
   - component: {fileID: 2807100731114694782}
   - component: {fileID: 2807100731114694773}
-  - component: {fileID: 2807100731114694783}
   - component: {fileID: 2807100731114694774}
   - component: {fileID: 2807100731114694775}
   - component: {fileID: 2807100731114694772}
-  - component: {fileID: 7206359169992392441}
+  - component: {fileID: 4274232430196126707}
+  - component: {fileID: 8423761101330850047}
   m_Layer: 0
-  m_Name: Racoon
+  m_Name: Granny
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -258,19 +258,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogBoxPrefab: {fileID: 4629417679846255871, guid: 26dc0f2e71df34d6eb96a507f5d27837, type: 3}
---- !u!114 &2807100731114694783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2807100731114694780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dcb361aa2f94a6419a53665392fb91e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  localSprite: {fileID: 21300000, guid: cb343b0491a33e94cb0c9da36dc9f5fd, type: 3}
 --- !u!212 &2807100731114694774
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -311,7 +298,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 5546671543968653177, guid: d1c35d53d83211349aee3a6c2e5566ce, type: 3}
+  m_Sprite: {fileID: 7278733229130966086, guid: 42c42f34a5c45174f9c3286c3d2ea29c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -332,7 +319,7 @@ Animator:
   m_GameObject: {fileID: 2807100731114694780}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2c2898d7f408f694d888cbb35171a383, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0a85345cbf3aebc40b9e59b055b85a7d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -364,7 +351,20 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f84a93da32f7a492f9a49004fb360e6b, type: 3}
   - {fileID: 8300000, guid: def88d2f0467f4d81aea77aa0c9388bc, type: 3}
   - {fileID: 8300000, guid: 3db6711b1a3c14a3fb4d04e4e5a1a043, type: 3}
---- !u!82 &7206359169992392441
+--- !u!114 &4274232430196126707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2807100731114694780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45381514b81753f4aa744f0db76560d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localSprite: {fileID: 21300000, guid: 1ce368b15e51c8948b88f679cb9c67e8, type: 3}
+--- !u!82 &8423761101330850047
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

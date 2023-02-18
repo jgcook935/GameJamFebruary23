@@ -20,15 +20,15 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -3459558614108198297, guid: d1c35d53d83211349aee3a6c2e5566ce, type: 3}
+      value: {fileID: -8961333078515613581, guid: 42c42f34a5c45174f9c3286c3d2ea29c, type: 3}
     - time: 0.083333336
-      value: {fileID: 1026407549584056185, guid: d1c35d53d83211349aee3a6c2e5566ce, type: 3}
+      value: {fileID: 6337122448146488251, guid: 42c42f34a5c45174f9c3286c3d2ea29c, type: 3}
     - time: 0.25
-      value: {fileID: -5540648042656198855, guid: d1c35d53d83211349aee3a6c2e5566ce, type: 3}
+      value: {fileID: -296765972645054811, guid: 42c42f34a5c45174f9c3286c3d2ea29c, type: 3}
     - time: 0.41666666
-      value: {fileID: 4050273695720440628, guid: d1c35d53d83211349aee3a6c2e5566ce, type: 3}
+      value: {fileID: 5347914585346091117, guid: 42c42f34a5c45174f9c3286c3d2ea29c, type: 3}
     - time: 0.5833333
-      value: {fileID: -3459558614108198297, guid: d1c35d53d83211349aee3a6c2e5566ce, type: 3}
+      value: {fileID: -8961333078515613581, guid: 42c42f34a5c45174f9c3286c3d2ea29c, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -48,11 +48,11 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -3459558614108198297, guid: d1c35d53d83211349aee3a6c2e5566ce, type: 3}
-    - {fileID: 1026407549584056185, guid: d1c35d53d83211349aee3a6c2e5566ce, type: 3}
-    - {fileID: -5540648042656198855, guid: d1c35d53d83211349aee3a6c2e5566ce, type: 3}
-    - {fileID: 4050273695720440628, guid: d1c35d53d83211349aee3a6c2e5566ce, type: 3}
-    - {fileID: -3459558614108198297, guid: d1c35d53d83211349aee3a6c2e5566ce, type: 3}
+    - {fileID: -8961333078515613581, guid: 42c42f34a5c45174f9c3286c3d2ea29c, type: 3}
+    - {fileID: 6337122448146488251, guid: 42c42f34a5c45174f9c3286c3d2ea29c, type: 3}
+    - {fileID: -296765972645054811, guid: 42c42f34a5c45174f9c3286c3d2ea29c, type: 3}
+    - {fileID: 5347914585346091117, guid: 42c42f34a5c45174f9c3286c3d2ea29c, type: 3}
+    - {fileID: -8961333078515613581, guid: 42c42f34a5c45174f9c3286c3d2ea29c, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -77,4 +77,18 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.25
+    functionName: PlayFootStep
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.5833333
+    functionName: PlayFootStep
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
