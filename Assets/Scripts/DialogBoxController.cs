@@ -73,7 +73,7 @@ public class DialogBoxController : MonoBehaviour, IClickable
         {
             //PlayRandomPaperSound();
             //animator.SetTrigger("DialogueClosed");
-            this.DialogCloseAction();
+            this.DialogCloseAction?.Invoke();
             CharacterManager.Instance.SetControlsEnabled(true);
             GameObject.Destroy(this.gameObject);
         }
