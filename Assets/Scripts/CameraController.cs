@@ -45,11 +45,8 @@ public class CameraController : MonoBehaviour
 
     void Awake()
     {
-        if (ChangeScenesManager.Instance.previousSceneIndex == 3)
-        {
-            minPosition = previousSceneCameraMin.Value;
-            maxPosition = previousSceneCameraMax.Value;
-        }
+        if (previousSceneCameraMin.Value != Vector2.zero) minPosition = previousSceneCameraMin.Value;
+        if (previousSceneCameraMax.Value != Vector2.zero) maxPosition = previousSceneCameraMax.Value;
     }
 
     void FixedUpdate()
