@@ -1219,7 +1219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ae877670a274cd7b9f62a794402bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localSprite: {fileID: 21300000, guid: c87024716d74c4c4eaa8f12559535a98, type: 3}
+  localSprite: {fileID: 21300000, guid: bfba20fae67d9a144839e85b091f7c37, type: 3}
 --- !u!61 &931439098
 BoxCollider2D:
   m_ObjectHideFlags: 0
