@@ -208,10 +208,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Racoon
       objectReference: {fileID: 0}
-    - target: {fileID: 2807100731114694783, guid: d017b74c5b8b959498e6d3fbab9ae549, type: 3}
-      propertyPath: localSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: cb343b0491a33e94cb0c9da36dc9f5fd, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d017b74c5b8b959498e6d3fbab9ae549, type: 3}
 --- !u!1001 &177964604
