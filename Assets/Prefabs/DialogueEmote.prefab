@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 6295345073201165233}
   - component: {fileID: 6295345073201165235}
   - component: {fileID: 6295345073201165232}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: DialogueEmote
   m_TagString: Untagged
   m_Icon: {fileID: 0}
