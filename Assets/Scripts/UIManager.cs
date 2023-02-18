@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject vsText;
     [SerializeField] TMP_Text playerText;
     [SerializeField] TMP_Text enemyText;
+    [SerializeField] CanvasGroup overworldHUD;
 
     private Animator crossfadeAnimator;
 
@@ -50,6 +51,7 @@ public class UIManager : MonoBehaviour
         CharacterManager.Instance.player.Enabled = false;
         ClickManager.Instance.SetClicksEnabled(false);
         arenaBackground.SetActive(true);
+        overworldHUD.alpha = 0;
         arenaCombatUI.GetComponent<CanvasGroup>().alpha = 1;
         arenaCombatUI.GetComponent<CanvasGroup>().interactable = true;
         arenaCombatUI.GetComponent<CanvasGroup>().blocksRaycasts = true;
@@ -73,8 +75,10 @@ public class UIManager : MonoBehaviour
 
         crossfadeAnimator.SetTrigger("End");
 
+        overworldHUD.alpha = 1;
         arenaBackground.SetActive(false);
         ArenaCombatManager.Instance.EndBattle();
+        OverworldHUDManager.Instance.UpdateStats();
 
         //yield return new WaitForSeconds(2);
 
