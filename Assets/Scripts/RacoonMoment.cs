@@ -18,11 +18,10 @@ public class RacoonMoment : MonoBehaviour
 
     void Start()
     {
-        dialogueBox.SetActive(false);
         destinationSetter = GetComponentInParent<AIDestinationSetter>();
-        if (racoonTalked.Value)
+        if (!racoonTalked.Value)
         {
-            dialogueBox.SetActive(true);
+            dialogueBox.SetActive(false);
         }
     }
 
@@ -34,6 +33,7 @@ public class RacoonMoment : MonoBehaviour
             startedDialogue = true;
             aipath.enabled = false;
             GetComponentInParent<Sign>().Click();
+            dialogueBox.SetActive(true);
         }
     }
 

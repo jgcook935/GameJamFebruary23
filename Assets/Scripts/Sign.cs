@@ -19,6 +19,7 @@ public class Sign : MonoBehaviour, IClickable
         if (dialogBox != null)
         {
             Debug.Log("we're returning because dialog box is not null");
+            return;
         }
 
         dialogBox = Instantiate(dialogBoxPrefab, transform);
