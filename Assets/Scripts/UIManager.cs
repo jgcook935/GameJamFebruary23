@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject tileGrid;
     [SerializeField] GameObject arenaCombatUI;
     [SerializeField] GameObject crossfade;
+    [SerializeField] GameObject vsText;
+    [SerializeField] TMP_Text playerText;
+    [SerializeField] TMP_Text enemyText;
 
     private Animator crossfadeAnimator;
 
@@ -30,6 +34,9 @@ public class UIManager : MonoBehaviour
 
     public IEnumerator TransitionToArena()
     {
+        vsText.SetActive(true);
+        playerText.text = ArenaCombatManager.Instance.PlayerName;
+        enemyText.text = ArenaCombatManager.Instance.EnemyName;
         AudioManager.Instance.LeaveOverWorld();
         crossfadeAnimator.SetTrigger("Start");
 
@@ -39,6 +46,7 @@ public class UIManager : MonoBehaviour
 
         crossfadeAnimator.SetTrigger("End");
 
+        vsText.SetActive(false);
         CharacterManager.Instance.player.Enabled = false;
         ClickManager.Instance.SetClicksEnabled(false);
         arenaBackground.SetActive(true);
