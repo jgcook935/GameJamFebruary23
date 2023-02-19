@@ -217,9 +217,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 979e37319ed0041cd9e76ef92693b914, type: 3}
     - target: {fileID: 2807100731114694783, guid: d017b74c5b8b959498e6d3fbab9ae549, type: 3}
+      propertyPath: defenseSounds.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2807100731114694783, guid: d017b74c5b8b959498e6d3fbab9ae549, type: 3}
       propertyPath: localHurtSounds.Array.size
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2807100731114694783, guid: d017b74c5b8b959498e6d3fbab9ae549, type: 3}
+      propertyPath: defenseSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 1188aadfbb9ca480ebf87622ab037b50, type: 3}
+    - target: {fileID: 2807100731114694783, guid: d017b74c5b8b959498e6d3fbab9ae549, type: 3}
+      propertyPath: defenseSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: fe64dd6c72b5149b4ba5af0aca4abd3b, type: 3}
     - target: {fileID: 2807100731114694783, guid: d017b74c5b8b959498e6d3fbab9ae549, type: 3}
       propertyPath: localHurtSounds.Array.data[0]
       value: 
@@ -3268,6 +3280,10 @@ PrefabInstance:
       propertyPath: healthSound
       value: 
       objectReference: {fileID: 8300000, guid: d02eb8145ca0a46d18950f9e470eecf4, type: 3}
+    - target: {fileID: 4274232430196126707, guid: 2cbac1ee06d1454439266f0a189d2f5f, type: 3}
+      propertyPath: defenseSound
+      value: 
+      objectReference: {fileID: 8300000, guid: f69cd13ec5f9845548f48b9116e43ed2, type: 3}
     - target: {fileID: 4274232430196126707, guid: 2cbac1ee06d1454439266f0a189d2f5f, type: 3}
       propertyPath: localHurtSounds.Array.size
       value: 7

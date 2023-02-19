@@ -183,9 +183,25 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 2807100731114694783, guid: d017b74c5b8b959498e6d3fbab9ae549, type: 3}
+      propertyPath: healthSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 979e37319ed0041cd9e76ef92693b914, type: 3}
+    - target: {fileID: 2807100731114694783, guid: d017b74c5b8b959498e6d3fbab9ae549, type: 3}
+      propertyPath: defenseSounds.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2807100731114694783, guid: d017b74c5b8b959498e6d3fbab9ae549, type: 3}
       propertyPath: localHurtSounds.Array.size
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2807100731114694783, guid: d017b74c5b8b959498e6d3fbab9ae549, type: 3}
+      propertyPath: defenseSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 1188aadfbb9ca480ebf87622ab037b50, type: 3}
+    - target: {fileID: 2807100731114694783, guid: d017b74c5b8b959498e6d3fbab9ae549, type: 3}
+      propertyPath: defenseSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: fe64dd6c72b5149b4ba5af0aca4abd3b, type: 3}
     - target: {fileID: 2807100731114694783, guid: d017b74c5b8b959498e6d3fbab9ae549, type: 3}
       propertyPath: localHurtSounds.Array.data[0]
       value: 
@@ -12944,9 +12960,17 @@ PrefabInstance:
       value: CharacterManager
       objectReference: {fileID: 0}
     - target: {fileID: 6210952362227137077, guid: 77728c3113348f24cb96014fd95d4824, type: 3}
+      propertyPath: healthSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6bec8b8de448748389ba31898a51f098, type: 3}
+    - target: {fileID: 6210952362227137077, guid: 77728c3113348f24cb96014fd95d4824, type: 3}
       propertyPath: localSprite
       value: 
       objectReference: {fileID: 21300000, guid: 2ea95454dbbd5ce40ad44b8b9cccf7ec, type: 3}
+    - target: {fileID: 6210952362227137077, guid: 77728c3113348f24cb96014fd95d4824, type: 3}
+      propertyPath: defenseSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 19074e1cc63f4474b9b523fef24de6cd, type: 3}
     - target: {fileID: 6210952362227137077, guid: 77728c3113348f24cb96014fd95d4824, type: 3}
       propertyPath: localHurtSounds.Array.size
       value: 5

@@ -8,6 +8,7 @@ public class GrannySign : MonoBehaviour, ISign
     [SerializeField] Sprite localSprite;
     [SerializeField] AudioClip[] localHurtSounds;
     [SerializeField] AudioClip healthSound;
+    [SerializeField] AudioClip defenseSound;
 
     public List<string> text { get; set; } = new List<string>
     {
@@ -48,8 +49,12 @@ public class GrannySign : MonoBehaviour, ISign
                         {
                         new Defense
                         {
-                            Name = "Cower",
-                            DefenseAmount = 1
+                            Name = "Perfume Spray",
+                            DefenseAmount = 2f,
+                            Sounds = new AudioClip[]
+                            {
+                                defenseSound
+                            }
                         },
                         null
                         }

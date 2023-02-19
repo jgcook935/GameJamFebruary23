@@ -8,6 +8,7 @@ public class RacoonSign : MonoBehaviour, ISign
     [SerializeField] Sprite localSprite;
     [SerializeField] AudioClip[] localHurtSounds;
     [SerializeField] AudioClip healthSound;
+    [SerializeField] AudioClip[] defenseSounds;
 
     public List<string> text { get; set; } = new List<string>
     {
@@ -49,8 +50,9 @@ public class RacoonSign : MonoBehaviour, ISign
                         {
                         new Defense
                         {
-                            Name = "Cower",
-                            DefenseAmount = 1
+                            Name = "Trash Dive",
+                            DefenseAmount = 2f,
+                            Sounds = defenseSounds
                         },
                         null
                         }
