@@ -183,6 +183,10 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 2807100731114694783, guid: d017b74c5b8b959498e6d3fbab9ae549, type: 3}
+      propertyPath: victorySO
+      value: 
+      objectReference: {fileID: 11400000, guid: a8c6652da640cae4a883a415c0009224, type: 2}
+    - target: {fileID: 2807100731114694783, guid: d017b74c5b8b959498e6d3fbab9ae549, type: 3}
       propertyPath: healthSound
       value: 
       objectReference: {fileID: 8300000, guid: 979e37319ed0041cd9e76ef92693b914, type: 3}

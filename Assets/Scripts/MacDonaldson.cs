@@ -10,6 +10,7 @@ public class MacDonaldson : MonoBehaviour, ISign
     [SerializeField] AudioClip[] localHurtSounds;
     [SerializeField] AudioClip healthSound;
     [SerializeField] AudioClip[] defenseSounds;
+    [SerializeField] BoolSO victorySO;
 
     public List<string> text { get; set; } = new List<string>
     {
@@ -79,7 +80,7 @@ public class MacDonaldson : MonoBehaviour, ISign
             };
         };
 
-        dialogCloseAction += () => StartCoroutine(UIManager.Instance.TransitionToArena());
+        dialogCloseAction += () => StartCoroutine(UIManager.Instance.TransitionToArena(victorySO));
     }
 
     void Awake()

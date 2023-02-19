@@ -9,7 +9,7 @@ public class Gate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!!destroyedChildren && beatPersonSO.Value == true)
+        if (!destroyedChildren && beatPersonSO.Value == true)
         {
             foreach (Transform child in transform)
             {
