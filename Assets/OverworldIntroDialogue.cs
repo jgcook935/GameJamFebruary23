@@ -11,8 +11,9 @@ public class OverworldIntroDialogue : MonoBehaviour, ISign
 
     public List<string> text { get; set; } = new List<string>
     {
-        "That dog was a real jerk",
-        "I guess I'll have to find a new home"
+        "Ugh that dog is a real jerk",
+        "There's no place for me there anymore, my time with that family has come to an end.",
+        "I guess I'm on my own..."
     };
 
     private void SetDialogCloseAction()

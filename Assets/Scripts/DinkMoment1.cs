@@ -22,7 +22,7 @@ public class DinkMoment1 : MonoBehaviour, ISign
     {
         "This picnic is so lovely",
         "If only we had a cat to share it with",
-        "You know I love our life but sometimes it gets pretty lonely with just the two of us...",
+        "I love our life but sometimes it gets pretty lonely with just the two of us...",
     };
 
     private void SetDialogCloseAction()
