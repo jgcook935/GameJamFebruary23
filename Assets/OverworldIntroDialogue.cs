@@ -11,7 +11,7 @@ public class OverworldIntroDialogue : MonoBehaviour, ISign
 
     public List<string> text { get; set; } = new List<string>
     {
-        "Ugh that dog is a real jerk",
+        "Ugh that dog is a real jerk.",
         "There's no place for me there anymore, my time with that family has come to an end.",
         "I guess I'm on my own..."
     };

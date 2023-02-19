@@ -35,7 +35,7 @@ public class RacoonSign2 : MonoBehaviour, ISign
             // make mac an enemy here by assigning the current enemy to him and init a player config object
             CharacterManager.Instance.playerConfigSO.Value.currentEnemy = new PlayerConfig
             {
-                currentHealth = 10f,
+                currentHealth = 12f,
                 maxHealth = 12f,
                 speed = 1f,
                 level = 2,
