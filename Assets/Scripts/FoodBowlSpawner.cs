@@ -20,31 +20,14 @@ public class FoodBowlSpawner : MonoBehaviour
 
     private void Awake()
     {
-        SpawnNewFoodBowl(3);
+        SpawnFoodBowls();
     }
 
-    private void SpawnNewFoodBowl(int previousSpawn)
+    private void SpawnFoodBowls()
     {
-        var nextSpawn = previousSpawn + 1;
-        if (Enumerable.Range(0, spawnPoints.Length).Contains(nextSpawn))
+        for (var i = 0; i < spawnPoints.Length; i++)
         {
-            Debug.Log($"NEXT SPAWN IS {nextSpawn}. AND FALLS WITHIN A HEALTHY RANGE. USING IT.");
+            GameObject.Instantiate(foodBowlPrefab, spawnPoints[i].transform);
         }
-        else
-        {
-            nextSpawn = previousSpawn - 1;
-            if (Enumerable.Range(0, spawnPoints.Length).Contains(nextSpawn))
-            {
-                Debug.Log($"NEXT SPAWN IS {nextSpawn}. AND FALLS WITHIN A HEALTHY RANGE. USING IT.");
-            }
-            else
-            {
-                nextSpawn = 0;
-                Debug.Log($"COULDN'T GET A NEW SPAWN POINT ORGANICALLY, GOING TO USE 0");
-            }
-        }
-
-        var foodBowl = GameObject.Instantiate(foodBowlPrefab, spawnPoints[nextSpawn].transform);
-        foodBowl.GetComponent<FoodBowl>().SetOnFoodEatenAction(() => SpawnNewFoodBowl(nextSpawn));
     }
 }

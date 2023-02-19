@@ -9,6 +9,7 @@ public class OverworldHUDManager : MonoBehaviour
     [SerializeField] Slider hpSlider;
     [SerializeField] Text currentHealthText;
     [SerializeField] Text maxHealthText;
+    [SerializeField] GameObject healthFullMessage;
 
     static OverworldHUDManager _instance;
     public static OverworldHUDManager Instance
@@ -47,5 +48,13 @@ public class OverworldHUDManager : MonoBehaviour
         currentHealthText.text = ArenaCombatManager.Instance.PlayerCurrentHealth < 0 ? "0" : ArenaCombatManager.Instance.PlayerCurrentHealth.ToString();
         maxHealthText.text = ArenaCombatManager.Instance.PlayerMaxHealth.ToString();
         hpSlider.value = ArenaCombatManager.Instance.PlayerCurrentHealth < 0 ? 0 : ArenaCombatManager.Instance.PlayerCurrentHealth / 10f;
+    }
+
+    public IEnumerator ShowHealthFullMessage()
+    {
+        healthFullMessage.SetActive(true);
+        yield return new WaitForSeconds(2);
+        healthFullMessage.SetActive(false);
+        yield return null;
     }
 }
