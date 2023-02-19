@@ -54,6 +54,7 @@ public class RacoonMoment : MonoBehaviour
 
     IEnumerator Exclamation()
     {
+        AudioManager.Instance.PlayNotificationSound();
         exclamationSprite.enabled = true;
         exclamationAnimator.enabled = true;
         exclamationAnimator.Play("PopupEmote");

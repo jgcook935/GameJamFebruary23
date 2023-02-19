@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioClip overWorldTheme;
     [SerializeField] AudioClip arenaTheme;
     [SerializeField] AudioClip arenaThemeTransition;
+    [SerializeField] AudioClip notification;
 
     private float overworldThemePlaybackhead = 0f;
 
@@ -64,5 +65,10 @@ public class AudioManager : MonoBehaviour
     {
         source.volume = .25f;
         source.PlayOneShot(arenaThemeTransition);
+    }
+
+    public void PlayNotificationSound()
+    {
+        source.PlayOneShot(notification);
     }
 }
