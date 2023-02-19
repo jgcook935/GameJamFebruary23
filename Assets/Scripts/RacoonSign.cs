@@ -15,8 +15,8 @@ public class RacoonSign : MonoBehaviour, ISign
     public List<string> text { get; set; } = new List<string>
     {
         "Well, well, well...",
-        "Look at the fancy housecat",
-        "Run on home to your family, housecat",
+        "Look at the fancy house cat",
+        "Run on home to your family, house cat. You can't survive on these streets.",
         "Oh you want to show me what you got?",
     };
 
