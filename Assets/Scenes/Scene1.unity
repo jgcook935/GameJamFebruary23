@@ -208,6 +208,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Racoon
       objectReference: {fileID: 0}
+    - target: {fileID: 2807100731114694780, guid: d017b74c5b8b959498e6d3fbab9ae549, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2807100731114694783, guid: d017b74c5b8b959498e6d3fbab9ae549, type: 3}
+      propertyPath: healthSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 979e37319ed0041cd9e76ef92693b914, type: 3}
     - target: {fileID: 2807100731114694783, guid: d017b74c5b8b959498e6d3fbab9ae549, type: 3}
       propertyPath: localHurtSounds.Array.size
       value: 7
@@ -1359,7 +1367,7 @@ GameObject:
   - component: {fileID: 931439098}
   m_Layer: 0
   m_Name: MacDonaldson
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1446,6 +1454,11 @@ MonoBehaviour:
   localHurtSounds:
   - {fileID: 8300000, guid: 82f4164503b49400f91c2180a46fadd0, type: 3}
   - {fileID: 8300000, guid: 616de3051afe041a998236c228b0ee11, type: 3}
+  healthSound: {fileID: 8300000, guid: 93afc397e35854d1f840c852c135be97, type: 3}
+  defenseSounds:
+  - {fileID: 8300000, guid: fca8498a08cf24c6cb416bd07aa3be59, type: 3}
+  - {fileID: 8300000, guid: 7160f28a4c29b45249e683ecf8c9968f, type: 3}
+  - {fileID: 8300000, guid: a680205ad99434b39bc0fb09f63d756d, type: 3}
 --- !u!61 &931439098
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3247,6 +3260,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Granny
       objectReference: {fileID: 0}
+    - target: {fileID: 2807100731114694780, guid: 2cbac1ee06d1454439266f0a189d2f5f, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4274232430196126707, guid: 2cbac1ee06d1454439266f0a189d2f5f, type: 3}
+      propertyPath: healthSound
+      value: 
+      objectReference: {fileID: 8300000, guid: d02eb8145ca0a46d18950f9e470eecf4, type: 3}
     - target: {fileID: 4274232430196126707, guid: 2cbac1ee06d1454439266f0a189d2f5f, type: 3}
       propertyPath: localHurtSounds.Array.size
       value: 7
@@ -7739,9 +7760,17 @@ PrefabInstance:
       value: CharacterManager
       objectReference: {fileID: 0}
     - target: {fileID: 6210952362227137077, guid: 77728c3113348f24cb96014fd95d4824, type: 3}
+      propertyPath: healthSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6bec8b8de448748389ba31898a51f098, type: 3}
+    - target: {fileID: 6210952362227137077, guid: 77728c3113348f24cb96014fd95d4824, type: 3}
       propertyPath: localSprite
       value: 
       objectReference: {fileID: 21300000, guid: 2ea95454dbbd5ce40ad44b8b9cccf7ec, type: 3}
+    - target: {fileID: 6210952362227137077, guid: 77728c3113348f24cb96014fd95d4824, type: 3}
+      propertyPath: defenseSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 19074e1cc63f4474b9b523fef24de6cd, type: 3}
     - target: {fileID: 6210952362227137077, guid: 77728c3113348f24cb96014fd95d4824, type: 3}
       propertyPath: localHurtSounds.Array.size
       value: 5

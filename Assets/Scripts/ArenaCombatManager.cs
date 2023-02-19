@@ -267,6 +267,8 @@ public class ArenaCombatManager : MonoBehaviour
         var message = $"{PlayerName} used {healthBoost.Name} to heal for {healthBoost.HealthAmount} health points.";
         Debug.Log(message);
 
+        source.PlayOneShot(healthBoost.Sound);
+
         TogglePlayerControls(false);
 
         Action followAction = () =>
@@ -291,6 +293,8 @@ public class ArenaCombatManager : MonoBehaviour
         var message = $"{EnemyName} used {healthBoost.Name} to heal for {healthBoost.HealthAmount} health points.";
         Debug.Log(message);
 
+        source.PlayOneShot(healthBoost.Sound);
+
         Action followAction = () =>
         {
             PassToPlayer();
@@ -308,6 +312,8 @@ public class ArenaCombatManager : MonoBehaviour
         };
         var message = $"{PlayerName} used {defense.Name} to shield for {defense.DefenseAmount} hit points.";
         Debug.Log(message);
+
+        source.PlayOneShot(defense.Sounds[UnityEngine.Random.Range(0, defense.Sounds.Length)]);
 
         TogglePlayerControls(false);
 
@@ -328,6 +334,8 @@ public class ArenaCombatManager : MonoBehaviour
         };
         var message = $"{EnemyName} used {defense.Name} to shield for {defense.DefenseAmount} hit points.";
         Debug.Log(message);
+
+        source.PlayOneShot(defense.Sounds[UnityEngine.Random.Range(0, defense.Sounds.Length)]);
 
         Action followAction = () =>
         {

@@ -32,9 +32,9 @@ public class ClickManager : MonoBehaviour
 
             if (hit)
             {
-                Debug.Log($"we hit something {hit.collider.gameObject.name}");
+                Debug.Log($"we hit something {hit.collider.gameObject.name}, {hit.collider.gameObject.tag}");
                 IClickable clickable = hit.collider.GetComponent<IClickable>();
-                clickable?.Click(true);
+                clickable?.Click(hit.collider.gameObject.tag == "Enemy");
             }
 
             Debug.Log("we clicked but didn't hit anything");

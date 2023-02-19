@@ -27,6 +27,7 @@ public class Sign : MonoBehaviour, IClickable
         var sign = GetComponent<ISign>();
         if (CharacterManager.Instance.playerConfigSO.Value.currentHealth == 0 && overrideText)
         {
+            Debug.Log($"WE'RE override text because player health is {CharacterManager.Instance.playerConfigSO.Value.currentHealth} and overrideText is {overrideText}");
             controller.SetText(new List<string>
             {
                 "You look seriously hurt.",
@@ -36,6 +37,7 @@ public class Sign : MonoBehaviour, IClickable
         }
         else
         {
+            Debug.Log($"WE'RE SETTING NORMAL TEXT BECAUSE PLAYER HEALTH IS {CharacterManager.Instance.playerConfigSO.Value.currentHealth} and overrideText is {overrideText}");
             controller.SetText(sign.text);
             controller.SetDialogCloseAction(sign.dialogCloseAction);
         }

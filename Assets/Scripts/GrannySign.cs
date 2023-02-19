@@ -7,6 +7,7 @@ public class GrannySign : MonoBehaviour, ISign
 {
     [SerializeField] Sprite localSprite;
     [SerializeField] AudioClip[] localHurtSounds;
+    [SerializeField] AudioClip healthSound;
 
     public List<string> text { get; set; } = new List<string>
     {
@@ -60,7 +61,8 @@ public class GrannySign : MonoBehaviour, ISign
                         new HealthBoost
                         {
                             Name = "Asprin",
-                            HealthAmount = 3f
+                            HealthAmount = 3f,
+                            Sound = healthSound
                         },
                         null
                         },

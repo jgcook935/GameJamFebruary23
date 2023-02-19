@@ -8,6 +8,8 @@ public class MacDonaldson : MonoBehaviour, ISign
 {
     [SerializeField] Sprite localSprite;
     [SerializeField] AudioClip[] localHurtSounds;
+    [SerializeField] AudioClip healthSound;
+    [SerializeField] AudioClip[] defenseSounds;
 
     public List<string> text { get; set; } = new List<string>
     {
@@ -41,7 +43,7 @@ public class MacDonaldson : MonoBehaviour, ISign
                         new Attack
                         {
                             Name = "Spray Bottle",
-                            DamageAmount = 10
+                            DamageAmount = 7f
                         },
                         null
                         },
@@ -49,8 +51,9 @@ public class MacDonaldson : MonoBehaviour, ISign
                         {
                         new Defense
                         {
-                            Name = "Cower",
-                            DefenseAmount = 1
+                            Name = "Pants Hike",
+                            DefenseAmount = 2f,
+                            Sounds = defenseSounds
                         },
                         null
                         }
@@ -62,7 +65,8 @@ public class MacDonaldson : MonoBehaviour, ISign
                         new HealthBoost
                         {
                             Name = "Cuppa Joe",
-                            HealthAmount = 3f
+                            HealthAmount = 3f,
+                            Sound = healthSound
                         },
                         null
                         },

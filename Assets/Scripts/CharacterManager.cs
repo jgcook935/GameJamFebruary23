@@ -19,6 +19,8 @@ public class CharacterManager : MonoBehaviour
     [SerializeField] GameObject mainCameraPrefab;
     [SerializeField] Sprite localSprite;
     [SerializeField] AudioClip[] localHurtSounds;
+    [SerializeField] AudioClip healthSound;
+    [SerializeField] AudioClip defenseSound;
 
     private CameraController cameraController;
     [HideInInspector] public PlayerMovement player;
@@ -62,7 +64,11 @@ public class CharacterManager : MonoBehaviour
                         new Defense
                         {
                             Name = "Roll",
-                            DefenseAmount = 3f
+                            DefenseAmount = 3f,
+                            Sounds = new AudioClip[]
+                            {
+                                defenseSound
+                            }
                         },
                         null
                     }
@@ -74,7 +80,8 @@ public class CharacterManager : MonoBehaviour
                         new HealthBoost
                         {
                             Name = "Catnip",
-                            HealthAmount = 2f
+                            HealthAmount = 2f,
+                            Sound = healthSound
                         },
                         null
                     },

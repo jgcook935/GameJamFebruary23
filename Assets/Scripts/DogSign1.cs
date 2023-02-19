@@ -7,6 +7,7 @@ public class DogSign1 : MonoBehaviour, ISign
 {
     [SerializeField] Sprite localSprite;
     [SerializeField] AudioClip[] localHurtSounds;
+    [SerializeField] AudioClip healthSound;
 
     public List<string> text { get; set; } = new List<string>
     {
@@ -57,7 +58,8 @@ public class DogSign1 : MonoBehaviour, ISign
                         new HealthBoost
                         {
                             Name = "Chew Bone",
-                            HealthAmount = 9f
+                            HealthAmount = 9f,
+                            Sound = healthSound
                         },
                         null
                         },

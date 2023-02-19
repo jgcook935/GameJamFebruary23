@@ -7,6 +7,7 @@ public class RacoonSign : MonoBehaviour, ISign
 {
     [SerializeField] Sprite localSprite;
     [SerializeField] AudioClip[] localHurtSounds;
+    [SerializeField] AudioClip healthSound;
 
     public List<string> text { get; set; } = new List<string>
     {
@@ -61,7 +62,8 @@ public class RacoonSign : MonoBehaviour, ISign
                         new HealthBoost
                         {
                             Name = "Eat Rotten BigMac",
-                            HealthAmount = 3f
+                            HealthAmount = 3f,
+                            Sound = healthSound
                         },
                         null
                         },

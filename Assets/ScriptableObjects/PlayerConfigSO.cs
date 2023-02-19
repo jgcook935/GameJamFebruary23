@@ -64,6 +64,7 @@ public class HealthBoost
 {
     public string Name { get; set; }
     public float HealthAmount { get; set; }
+    public AudioClip Sound { get; set; }
 }
 
 /// <summary>
@@ -92,6 +93,7 @@ public class Attack
 {
     public string Name { get; set; }
     public float DamageAmount { get; set; }
+    //public AudioClip Sound { get; set; }
 }
 
 /// <summary>
@@ -101,4 +103,5 @@ public class Defense
 {
     public string Name { get; set; }
     public float DefenseAmount { get; set; }
+    public AudioClip[] Sounds { get; set; }
 }
