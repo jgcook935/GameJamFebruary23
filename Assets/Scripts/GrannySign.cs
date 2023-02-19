@@ -12,7 +12,6 @@ public class GrannySign : MonoBehaviour, ISign
     [SerializeField] BoolSO victorySO;
     private bool flippedDialogue = false;
 
-
     public List<string> text { get; set; } = new List<string>
     {
         "UGH! A stray cat!",
