@@ -12,9 +12,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Scene1.unity
     guid: 851922299d161a547b5e1381e00792ae
   - enabled: 1
-    path: Assets/Scenes/Scene2.unity
-    guid: d2a1cf6e302b34a8bb20d597cd0b9b8d
-  - enabled: 1
     path: Assets/Scenes/Arena.unity
     guid: 5ecbafc8556364d98b906240843641f2
+  - enabled: 1
+    path: Assets/Scenes/Scene2 old home.unity
+    guid: 84a7f7ddd44f8d146903d51ccf2f5312
+  - enabled: 1
+    path: Assets/Scenes/Scene3 shed.unity
+    guid: c0be2c5295559594ea8fa060bb1867e7
+  - enabled: 1
+    path: Assets/Scenes/Scene4 dink.unity
+    guid: d828225949b76ca44af0a4070d74e801
   m_configObjects: {}
