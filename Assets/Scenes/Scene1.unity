@@ -3288,26 +3288,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 766286289765623471, guid: 8aadac1da9b99cb459782837afab087f, type: 3}
-      propertyPath: m_TileSpriteArray.Array.data[105].m_Data
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 766286289765623471, guid: 8aadac1da9b99cb459782837afab087f, type: 3}
-      propertyPath: m_TileSpriteArray.Array.data[126].m_Data
-      value: 
-      objectReference: {fileID: 2024613620162473879, guid: 27f561987c40d5549807f217e314619a, type: 3}
-    - target: {fileID: 766286289765623471, guid: 8aadac1da9b99cb459782837afab087f, type: 3}
-      propertyPath: m_TileSpriteArray.Array.data[105].m_RefCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 766286289765623471, guid: 8aadac1da9b99cb459782837afab087f, type: 3}
-      propertyPath: m_TileSpriteArray.Array.data[126].m_RefCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 766286289765623471, guid: 8aadac1da9b99cb459782837afab087f, type: 3}
-      propertyPath: m_Tiles.Array.data[1205].second.m_TileSpriteIndex
-      value: 126
-      objectReference: {fileID: 0}
     - target: {fileID: 766286291449144552, guid: 8aadac1da9b99cb459782837afab087f, type: 3}
       propertyPath: m_Name
       value: Grid
