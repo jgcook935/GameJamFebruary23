@@ -11,6 +11,8 @@ public class DinkMoment2 : MonoBehaviour, ISign
     [SerializeField] private SpriteRenderer exclamationSprite;
     [SerializeField] private AIPath aipath;
     [SerializeField] private GameObject dialogueBox;
+    [SerializeField] Animator crossfadeAnimator;
+    [SerializeField] GameObject credits;
 
     [SerializeField] AIDestinationSetter destinationSetter1;
 
@@ -85,8 +87,10 @@ public class DinkMoment2 : MonoBehaviour, ISign
         CharacterManager.Instance.player.Enabled = false;
         yield return new WaitForSeconds(1);
         CharacterManager.Instance.player.Enabled = false;
-        // fade to black
-        yield return new WaitForSeconds(3);
+        AudioManager.Instance.LeaveOverWorld();
+        crossfadeAnimator.SetTrigger("Start");
+        credits.SetActive(true);
+        yield return new WaitForSeconds(5);
         // show another text about the end is a new beginning
         // change scene to main menu
         SceneManager.LoadScene(0);
