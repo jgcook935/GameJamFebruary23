@@ -19,7 +19,7 @@ public class DinkScene1 : MonoBehaviour, ISign
     public List<string> text { get; set; } = new List<string>
     {
         "This picnic is so lovely",
-        "If only we had a cat"
+        "If only we had a cat to share it with..."
     };
 
     private void SetDialogCloseAction()
