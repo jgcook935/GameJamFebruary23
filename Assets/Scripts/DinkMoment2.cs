@@ -84,6 +84,7 @@ public class DinkMoment2 : MonoBehaviour, ISign
 
     IEnumerator PlayEnd()
     {
+        ClickManager.Instance.SetClicksEnabled(false);
         CharacterManager.Instance.player.Enabled = false;
         yield return new WaitForSeconds(1);
         CharacterManager.Instance.player.Enabled = false;
