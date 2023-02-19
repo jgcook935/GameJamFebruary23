@@ -20,9 +20,9 @@ public class DinkMoment1 : MonoBehaviour, ISign
 
     public List<string> text { get; set; } = new List<string>
     {
-        "This picnic is so lovely",
+        "This picnic is so lovely.",
         "If only we had a cat to share it with",
-        "I love our life but sometimes it gets pretty lonely with just the two of us...",
+        "I love our life but sometimes it gets pretty lonely with just the two of us..."
     };
 
     private void SetDialogCloseAction()
