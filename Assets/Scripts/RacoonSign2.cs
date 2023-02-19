@@ -10,12 +10,19 @@ public class RacoonSign2 : MonoBehaviour, ISign
     [SerializeField] AudioClip healthSound;
     [SerializeField] AudioClip[] defenseSounds;
     [SerializeField] BoolSO victorySO;
+    private bool flippedDialogue = false;
+
 
     public List<string> text { get; set; } = new List<string>
     {
         "..? Oh it's you housecat",
         "You got the best of me last time but you got lucky",
         "Time for some payback",
+    };
+
+    public List<string> victoryText { get; set; } = new List<string>
+    {
+        "Alright, alright, you're a bad cat",
     };
 
     public Action dialogCloseAction { get; set; }
@@ -81,8 +88,23 @@ public class RacoonSign2 : MonoBehaviour, ISign
         dialogCloseAction += () => StartCoroutine(UIManager.Instance.TransitionToArena(victorySO));
     }
 
+    private void SetVictoryDialogCloseAction()
+    {
+        dialogCloseAction = () => { };
+    }
+
     void Awake()
     {
         SetDialogCloseAction();
+    }
+
+    void Update()
+    {
+        if (victorySO.Value && !flippedDialogue)
+        {
+            text = victoryText;
+            SetVictoryDialogCloseAction();
+            flippedDialogue = true;
+        }
     }
 }

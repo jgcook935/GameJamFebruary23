@@ -10,13 +10,20 @@ public class GrannySign : MonoBehaviour, ISign
     [SerializeField] AudioClip healthSound;
     [SerializeField] AudioClip defenseSound;
     [SerializeField] BoolSO victorySO;
+    private bool flippedDialogue = false;
+
 
     public List<string> text { get; set; } = new List<string>
     {
         "UGH! A stray cat!",
         "Listen here you mangey cat...",
-        "You better not go near my prized petuinas, they won FIRST PLACE at the state fair!",
+        "You better not go near my prized petunias, they won FIRST PLACE at the state fair!",
         "Well, if you're not going to back away, I'LL MAKE YOU!",
+    };
+
+    public List<string> victoryText { get; set; } = new List<string>
+    {
+        "Please don't touch my petunias!",
     };
 
     public Action dialogCloseAction { get; set; }
@@ -84,8 +91,23 @@ public class GrannySign : MonoBehaviour, ISign
         dialogCloseAction += () => StartCoroutine(UIManager.Instance.TransitionToArena(victorySO));
     }
 
+    private void SetVictoryDialogCloseAction()
+    {
+        dialogCloseAction = () => { };
+    }
+
     void Awake()
     {
         SetDialogCloseAction();
+    }
+
+    void Update()
+    {
+        if (victorySO.Value && !flippedDialogue)
+        {
+            text = victoryText;
+            SetVictoryDialogCloseAction();
+            flippedDialogue = true;
+        }
     }
 }
