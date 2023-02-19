@@ -275,6 +275,30 @@ TextureImporter:
   - first:
       213: 4977986289160007519
     second: TreesAndRocks_90
+  - first:
+      213: 3262393667099415028
+    second: TreesAndRocks_91
+  - first:
+      213: 3863690951817516447
+    second: TreesAndRocks_92
+  - first:
+      213: -8504987017654624364
+    second: TreesAndRocks_93
+  - first:
+      213: -7542147825692519850
+    second: TreesAndRocks_94
+  - first:
+      213: -8247563012056960612
+    second: TreesAndRocks_95
+  - first:
+      213: 5200821033738627295
+    second: TreesAndRocks_96
+  - first:
+      213: 7735861826633241391
+    second: TreesAndRocks_97
+  - first:
+      213: 4235161417407199488
+    second: TreesAndRocks_98
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -2294,6 +2318,174 @@ TextureImporter:
       bones: []
       spriteID: f5fa52ec72c551540800000000000000
       internalID: 4977986289160007519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreesAndRocks_91
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f1d1fc51c9564d20800000000000000
+      internalID: 3262393667099415028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreesAndRocks_92
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9559f033769e9530800000000000000
+      internalID: 3863690951817516447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreesAndRocks_93
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49f13696e5738f980800000000000000
+      internalID: -8504987017654624364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreesAndRocks_94
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 652dc163388e45790800000000000000
+      internalID: -7542147825692519850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreesAndRocks_95
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c91b1b35325ca8d80800000000000000
+      internalID: -8247563012056960612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreesAndRocks_96
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd8ee50dc270d2840800000000000000
+      internalID: 5200821033738627295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreesAndRocks_97
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f239aff485d4b5b60800000000000000
+      internalID: 7735861826633241391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreesAndRocks_98
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 009fefaced056ca30800000000000000
+      internalID: 4235161417407199488
       vertices: []
       indices: 
       edges: []
