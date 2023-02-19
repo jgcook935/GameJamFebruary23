@@ -25,7 +25,7 @@ public class Sign : MonoBehaviour, IClickable
         dialogBox = Instantiate(dialogBoxPrefab, transform);
         var controller = dialogBox.GetComponent<DialogBoxController>();
         var sign = GetComponent<ISign>();
-        if (CharacterManager.Instance.playerConfigSO.Value.currentHealth == 0 && overrideText)
+        if (CharacterManager.Instance.playerConfigSO.Value.currentHealth <= 0 && overrideText)
         {
             Debug.Log($"WE'RE override text because player health is {CharacterManager.Instance.playerConfigSO.Value.currentHealth} and overrideText is {overrideText}");
             controller.SetText(new List<string>
