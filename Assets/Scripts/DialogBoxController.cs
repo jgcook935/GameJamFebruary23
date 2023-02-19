@@ -62,14 +62,14 @@ public class DialogBoxController : MonoBehaviour, IClickable
             CharacterManager.Instance.SetControlsEnabled(true);
             GameObject.Destroy(this.gameObject);
         }
-        else if (isOpen && (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F)) && textIndex < text.Count)
+        else if (isOpen && (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) && textIndex < text.Count)
         {
             //PlayRandomPaperSound();
             gameObject.GetComponentInChildren<Text>().text = text[textIndex];
             textIndex++;
             // play a continue sound
         }
-        else if (isOpen && (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F)) && textIndex == text.Count)
+        else if (isOpen && (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) && textIndex == text.Count)
         {
             //PlayRandomPaperSound();
             //animator.SetTrigger("DialogueClosed");
