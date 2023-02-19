@@ -8,12 +8,13 @@ public class NPCMovement : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private AIPath aipath;
     [SerializeField] AudioClip[] footsteps;
+    [SerializeField] private bool onlyWalkDown = false;
     private AudioSource source => GetComponent<AudioSource>();
 
     void Update()
     {
         var moveDirection = aipath.velocity;
-        animator.SetFloat("Horizontal", moveDirection.x);
+        if (!onlyWalkDown) animator.SetFloat("Horizontal", moveDirection.x);
         animator.SetFloat("Vertical", moveDirection.y);
         animator.SetFloat("Speed", moveDirection.sqrMagnitude);
     }
