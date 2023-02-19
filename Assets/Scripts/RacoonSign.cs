@@ -49,7 +49,7 @@ public class RacoonSign : MonoBehaviour, ISign
                         new Attack
                         {
                             Name = "Rabies Bite",
-                            DamageAmount = 9
+                            DamageAmount = 6f
                         },
                         null
                         },
