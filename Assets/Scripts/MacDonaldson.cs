@@ -11,9 +11,11 @@ public class MacDonaldson : MonoBehaviour, ISign
 
     public List<string> text { get; set; } = new List<string>
     {
-        "Shoo, kitty",
+        "Hey there, kitty! What are you doing out here all alone in this small town? It's not the most friendly place around",
         "...",
-        "I said SHOOO KITTY"
+        "I know what you mean. I'm a law-abiding, tax-paying citizen, but people here still give me the cold shoulder. Here, I've got an extra donut. Take it. ",
+        "What?! You don't like donuts? How dare you!? You should be grateful for what I'm offering you! ",
+        "Fine, then! If you won't accept my hospitality, then I'm not going to be so friendly anymore. Prepare to battle, kitty!"
     };
 
     public Action dialogCloseAction { get; set; } 

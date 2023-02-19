@@ -10,7 +10,10 @@ public class GrannySign : MonoBehaviour, ISign
 
     public List<string> text { get; set; } = new List<string>
     {
-        "EEEK! A cat!",
+        "UGH! A stray cat!",
+        "Listen here you mangey cat...",
+        "You better not go near my prized petuinas, they won FIRST PLACE at the state fair!",
+        "Well, if you're not going to back away, I'LL MAKE YOU GET AWAY.",
     };
 
     public Action dialogCloseAction { get; set; }
