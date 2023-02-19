@@ -11,7 +11,7 @@ public class DialogueBoxEmote : MonoBehaviour
 
     void Update()
     {
-        if (animator.enabled && (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F)))
+        if (animator.enabled && ClickManager.Instance.clicksEnabled && (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F)))
         {
             GetComponentInParent<Sign>().Click(isEnemy);
         }
