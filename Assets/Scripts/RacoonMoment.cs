@@ -32,7 +32,7 @@ public class RacoonMoment : MonoBehaviour
         {
             startedDialogue = true;
             aipath.enabled = false;
-            GetComponentInParent<Sign>().Click();
+            GetComponentInParent<Sign>().Click(true);
             dialogueBox.SetActive(true);
         }
     }

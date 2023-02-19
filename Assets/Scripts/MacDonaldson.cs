@@ -18,7 +18,7 @@ public class MacDonaldson : MonoBehaviour, ISign
         "Fine, then! If you won't accept my hospitality, then I'm not going to be so friendly anymore. Prepare to battle, kitty!"
     };
 
-    public Action dialogCloseAction { get; set; } 
+    public Action dialogCloseAction { get; set; }
 
     private void SetDialogCloseAction()
     {

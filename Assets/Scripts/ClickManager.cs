@@ -34,7 +34,7 @@ public class ClickManager : MonoBehaviour
             {
                 Debug.Log($"we hit something {hit.collider.gameObject.name}");
                 IClickable clickable = hit.collider.GetComponent<IClickable>();
-                clickable?.Click();
+                clickable?.Click(true);
             }
 
             Debug.Log("we clicked but didn't hit anything");

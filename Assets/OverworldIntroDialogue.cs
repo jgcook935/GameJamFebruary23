@@ -40,6 +40,6 @@ public class OverworldIntroDialogue : MonoBehaviour, ISign
     {
         yield return new WaitForSeconds(1f);
         PlayerMovement.Instance.SetMovementEnabled(true);
-        GetComponent<Sign>().Click();
+        GetComponent<Sign>().Click(false);
     }
 }

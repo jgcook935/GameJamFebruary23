@@ -14,7 +14,7 @@ public class Sign : MonoBehaviour, IClickable
     GameObject dialogBox;
     public List<string> text { get; set; }
 
-    public void Click()
+    public void Click(bool overrideText)
     {
         if (dialogBox != null)
         {
@@ -25,7 +25,19 @@ public class Sign : MonoBehaviour, IClickable
         dialogBox = Instantiate(dialogBoxPrefab, transform);
         var controller = dialogBox.GetComponent<DialogBoxController>();
         var sign = GetComponent<ISign>();
-        controller.SetText(sign.text);
-        controller.SetDialogCloseAction(sign.dialogCloseAction);
+        if (CharacterManager.Instance.playerConfigSO.Value.currentHealth == 0 && overrideText)
+        {
+            controller.SetText(new List<string>
+            {
+                "You look seriously hurt.",
+                "Come back when you've had something to eat."
+            });
+            controller.SetDialogCloseAction(() => Debug.Log("PLAYER DOESN'T HAVE HEALTH, NEED TO HEAL UP BEFORE A FIGHT"));
+        }
+        else
+        {
+            controller.SetText(sign.text);
+            controller.SetDialogCloseAction(sign.dialogCloseAction);
+        }
     }
 }

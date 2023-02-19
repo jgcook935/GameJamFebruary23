@@ -346,40 +346,48 @@ public class ArenaCombatManager : MonoBehaviour
     {
         Debug.Log("ENEMY'S TURN TO ATTACK...");
         yield return new WaitForSeconds(3);
-        var actionChooser = UnityEngine.Random.Range(0, 31);
-        if (actionChooser <= 10)
+        if (playerConfig.Value.currentEnemy.name == "Dog")
         {
-            Debug.Log($"THE ACTION CHOOSER CHOSE TO DAMAGE BECAUSE THE VALUE WAS {actionChooser}");
             DamagePlayer(playerConfig.Value.currentEnemy.abilities.Attacks[0]);
-        }
-        else if (actionChooser <= 20)
-        {
-            Debug.Log($"THE ACTION CHOOSER CHOSE TO DEFEND BECAUSE THE VALUE WAS {actionChooser}");
-            SetEnemyDefense(playerConfig.Value.currentEnemy.abilities.Defenses[0]);
+            yield return null;
         }
         else
         {
-            if (playerConfig.Value.currentEnemy.currentHealth == playerConfig.Value.currentEnemy.maxHealth)
+            var actionChooser = UnityEngine.Random.Range(0, 31);
+            if (actionChooser <= 10)
             {
-                var actionChooserTieBreaker = UnityEngine.Random.Range(0, 21);
-                if (actionChooserTieBreaker <= 10)
-                {
-                    Debug.Log($"THE TIE BREAKER ACTION CHOOSER CHOSE TO DAMAGE BECAUSE THE VALUE WAS {actionChooserTieBreaker}");
-                    DamagePlayer(playerConfig.Value.currentEnemy.abilities.Attacks[0]);
-                }
-                else
-                {
-                    Debug.Log($"THE TIE BREAKER ACTION CHOOSER CHOSE TO DEFEND BECAUSE THE VALUE WAS {actionChooserTieBreaker}");
-                    SetEnemyDefense(playerConfig.Value.currentEnemy.abilities.Defenses[0]);
-                }
+                Debug.Log($"THE ACTION CHOOSER CHOSE TO DAMAGE BECAUSE THE VALUE WAS {actionChooser}");
+                DamagePlayer(playerConfig.Value.currentEnemy.abilities.Attacks[0]);
+            }
+            else if (actionChooser <= 20)
+            {
+                Debug.Log($"THE ACTION CHOOSER CHOSE TO DEFEND BECAUSE THE VALUE WAS {actionChooser}");
+                SetEnemyDefense(playerConfig.Value.currentEnemy.abilities.Defenses[0]);
             }
             else
             {
-                Debug.Log($"THE ACTION CHOOSER CHOSE TO HEAL BECAUSE THE VALUE WAS {actionChooser}");
-                HealEnemy(playerConfig.Value.currentEnemy.inventory.HealthBoosts[0]);
+                if (playerConfig.Value.currentEnemy.currentHealth == playerConfig.Value.currentEnemy.maxHealth)
+                {
+                    var actionChooserTieBreaker = UnityEngine.Random.Range(0, 21);
+                    if (actionChooserTieBreaker <= 10)
+                    {
+                        Debug.Log($"THE TIE BREAKER ACTION CHOOSER CHOSE TO DAMAGE BECAUSE THE VALUE WAS {actionChooserTieBreaker}");
+                        DamagePlayer(playerConfig.Value.currentEnemy.abilities.Attacks[0]);
+                    }
+                    else
+                    {
+                        Debug.Log($"THE TIE BREAKER ACTION CHOOSER CHOSE TO DEFEND BECAUSE THE VALUE WAS {actionChooserTieBreaker}");
+                        SetEnemyDefense(playerConfig.Value.currentEnemy.abilities.Defenses[0]);
+                    }
+                }
+                else
+                {
+                    Debug.Log($"THE ACTION CHOOSER CHOSE TO HEAL BECAUSE THE VALUE WAS {actionChooser}");
+                    HealEnemy(playerConfig.Value.currentEnemy.inventory.HealthBoosts[0]);
+                }
             }
+            yield return null;
         }
-        yield return null;
     }
 
     IEnumerator OnVictory()
@@ -398,7 +406,7 @@ public class ArenaCombatManager : MonoBehaviour
         TogglePlayerControls(false);
         // play some sort of defeat sound
         yield return new WaitForSeconds(3);
-        playerConfig.Value.currentHealth = 1f; // give them a little health to get to the next fight or find some health
+        //playerConfig.Value.currentHealth = 1f; // give them a little health to get to the next fight or find some health
         StartCoroutine(UIManager.Instance.TransitionToOverworld());
         yield return null;
     }

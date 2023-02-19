@@ -42,7 +42,7 @@ public class DialogBoxController : MonoBehaviour, IClickable
         NextTextOrDestroy();
     }
 
-    public void Click()
+    public void Click(bool overrideText)
     {
         NextTextOrDestroy();
     }

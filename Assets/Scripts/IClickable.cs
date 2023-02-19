@@ -1,4 +1,4 @@
 public interface IClickable
 {
-    void Click();
+    void Click(bool overrideText);
 }
