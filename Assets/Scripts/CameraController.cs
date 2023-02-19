@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraController : MonoBehaviour
 {
@@ -45,8 +46,11 @@ public class CameraController : MonoBehaviour
 
     void Awake()
     {
-        if (previousSceneCameraMin.Value != Vector2.zero) minPosition = previousSceneCameraMin.Value;
-        if (previousSceneCameraMax.Value != Vector2.zero) maxPosition = previousSceneCameraMax.Value;
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            if (previousSceneCameraMin.Value != Vector2.zero) minPosition = previousSceneCameraMin.Value;
+            if (previousSceneCameraMax.Value != Vector2.zero) maxPosition = previousSceneCameraMax.Value;
+        }
     }
 
     void FixedUpdate()
