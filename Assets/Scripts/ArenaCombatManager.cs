@@ -27,6 +27,7 @@ public class ArenaCombatManager : MonoBehaviour
 
     private DefenseConfig playerDefenseConfig;
     private DefenseConfig enemyDefenseConfig;
+    private BoolSO enemyVictorySO;
 
     static ArenaCombatManager _instance;
     public static ArenaCombatManager Instance
@@ -126,8 +127,9 @@ public class ArenaCombatManager : MonoBehaviour
 
     #endregion
 
-    public void StartBattle()
+    public void StartBattle(BoolSO victorySO)
     {
+        enemyVictorySO = victorySO;
         onBattleStart?.Invoke();
         if (PlayerSpeed >= EnemySpeed)
         {
@@ -400,6 +402,7 @@ public class ArenaCombatManager : MonoBehaviour
 
     IEnumerator OnVictory()
     {
+        enemyVictorySO.Value = true;
         ShowText("VICTORY", Color.green); // TODO make this green not so shitty
         TogglePlayerControls(false);
         // play some sort of victory sound

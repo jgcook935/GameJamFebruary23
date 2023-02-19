@@ -34,7 +34,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public IEnumerator TransitionToArena()
+    public IEnumerator TransitionToArena(BoolSO victorySO)
     {
         vsText.SetActive(true);
         playerText.text = ArenaCombatManager.Instance.PlayerName;
@@ -58,7 +58,7 @@ public class UIManager : MonoBehaviour
         arenaCombatUI.GetComponent<CanvasGroup>().blocksRaycasts = true;
 
         AudioManager.Instance.TransitionToArena();
-        ArenaCombatManager.Instance.StartBattle();
+        ArenaCombatManager.Instance.StartBattle(victorySO);
 
         yield return null;
     }

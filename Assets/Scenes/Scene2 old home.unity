@@ -131,6 +131,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 65334839, guid: 98fc4d18e549fe94eb51588878167d82, type: 3}
+      propertyPath: victorySO
+      value: 
+      objectReference: {fileID: 11400000, guid: fb69e72684d421442a2fa147936a1dc9, type: 2}
+    - target: {fileID: 65334839, guid: 98fc4d18e549fe94eb51588878167d82, type: 3}
       propertyPath: healthSound
       value: 
       objectReference: {fileID: 8300000, guid: 75da1dace5c3d492f9c6cd2ae19ebfa0, type: 3}
