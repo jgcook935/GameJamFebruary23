@@ -15,10 +15,10 @@ public class MacDonaldson : MonoBehaviour, ISign
 
     public List<string> text { get; set; } = new List<string>
     {
-        "Hey there, kitty! What are you doing out here all alone? This town isn't most friendly place around",
+        "Hey there, kitty! What are you doing out here all alone? This town isn't most friendly place around.",
         "Let me give you a little tip...",
-        "To progress through the town and discover new areas, you'll need to pass through the gates",
-        "To remove the gates, you'll need to win a battle",
+        "To progress through the town and discover new areas, you'll need to pass through the gates.",
+        "To remove the gates, you'll need to win a battle.",
         "Oh, and one more thing...",
         "If you insist on living outdoors all alone, you're gonna need some practice. Let's spar!"
     };
