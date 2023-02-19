@@ -69,7 +69,7 @@ public class DialogBoxController : MonoBehaviour, IClickable
             textIndex++;
             // play a continue sound
         }
-        else if (isOpen && (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) && textIndex == text.Count)
+        else if (isOpen && (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F)) && textIndex == text.Count)
         {
             //PlayRandomPaperSound();
             //animator.SetTrigger("DialogueClosed");

@@ -90,7 +90,7 @@ public class DinkMoment1 : MonoBehaviour, ISign
         destinationSetter2.target = dinkDestination;
 
         yield return new WaitForSeconds(3);
-        CharacterManager.Instance.player.Enabled = true;
+        CharacterManager.Instance.player.SetMovementEnabled(true);
         Destroy(this);
     }
 }

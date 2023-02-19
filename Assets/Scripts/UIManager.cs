@@ -36,6 +36,8 @@ public class UIManager : MonoBehaviour
 
     public IEnumerator TransitionToArena(BoolSO victorySO)
     {
+        CharacterManager.Instance.player.Enabled = false;
+        ClickManager.Instance.SetClicksEnabled(false);
         vsText.SetActive(true);
         playerText.text = ArenaCombatManager.Instance.PlayerName;
         enemyText.text = ArenaCombatManager.Instance.EnemyName;
@@ -88,7 +90,7 @@ public class UIManager : MonoBehaviour
 
         //yield return new WaitForSeconds(2);
 
-        CharacterManager.Instance.player.Enabled = true;
+        CharacterManager.Instance.player.SetMovementEnabled(true);
         ClickManager.Instance.SetClicksEnabled(true);
         AudioManager.Instance.TransitionToOverworld();
 
