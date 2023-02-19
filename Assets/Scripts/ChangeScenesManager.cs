@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static UnityEditor.FilePathAttribute;
+// using static UnityEditor.FilePathAttribute;
 
 public class ChangeScenesManager : MonoBehaviour
 {

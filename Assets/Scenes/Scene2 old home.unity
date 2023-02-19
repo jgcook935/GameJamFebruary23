@@ -150,6 +150,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8316988026831212903, guid: 98fc4d18e549fe94eb51588878167d82, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8316988027840998515, guid: 98fc4d18e549fe94eb51588878167d82, type: 3}
       propertyPath: m_Name
       value: Dog Fight

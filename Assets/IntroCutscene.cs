@@ -6,17 +6,18 @@ public class IntroCutscene : MonoBehaviour
 {
     [SerializeField] RacoonMoment moment;
 
-    void Awake()
+    void Start()
     {
-        moment.enabled = false;
         CharacterManager.Instance.player.Enabled = false;
+        moment.enabled = false;
         StartCoroutine(IntroStuff());
     }
 
     IEnumerator IntroStuff()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         moment.enabled = true;
+        yield return new WaitForSeconds(1);
         moment.TriggerMoment();
     }
 }
