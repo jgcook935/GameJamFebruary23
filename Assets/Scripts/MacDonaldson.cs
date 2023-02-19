@@ -52,7 +52,7 @@ public class MacDonaldson : MonoBehaviour, ISign
                         new Attack
                         {
                             Name = "Spray Bottle",
-                            DamageAmount = 7f
+                            DamageAmount = 5f
                         },
                         null
                         },
