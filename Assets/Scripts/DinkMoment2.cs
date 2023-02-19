@@ -20,8 +20,11 @@ public class DinkMoment2 : MonoBehaviour, ISign
 
     public List<string> text { get; set; } = new List<string>
     {
-        "OMGsh a beautiful kitty!",
-        "We will love you forever"
+        "Aww you poor kitty! How'd you find your way in here?",
+        "You look like you could use a bath and a good meal.",
+        "We've always wanted a cat. If you'd join us, our family would finally be complete.",
+        "Now you just need a name...",
+        "Welcome home, Skully!"
     };
 
     private void SetDialogCloseAction()
