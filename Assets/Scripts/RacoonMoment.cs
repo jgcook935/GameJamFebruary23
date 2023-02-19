@@ -37,13 +37,18 @@ public class RacoonMoment : MonoBehaviour
         }
     }
 
+    public void TriggerMoment()
+    {
+        racoonTalked.Value = true;
+        CharacterManager.Instance.player.Enabled = false;
+        StartCoroutine(Exclamation());
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player" && !racoonTalked.Value)
         {
-            racoonTalked.Value = true;
-            CharacterManager.Instance.player.Enabled = false;
-            StartCoroutine(Exclamation());
+            TriggerMoment();
         }
     }
 
