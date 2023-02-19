@@ -6,6 +6,7 @@ using Pathfinding;
 public class GuardDog : MonoBehaviour
 {
     [SerializeField] private GameObject dogPrefab;
+    AudioSource source => GetComponent<AudioSource>();
 
     private GameObject dog;
 
@@ -16,7 +17,7 @@ public class GuardDog : MonoBehaviour
             Debug.Log("Spawning Dog");
             dog = Instantiate(dogPrefab, transform);
             dog.GetComponent<AIDestinationSetter>().target = PlayerMovement.Instance.transform;
-            // play bark sound
+            source.Play();
             StartCoroutine(WaitBeforeAction());
         }
     }
