@@ -5,7 +5,7 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene(3);
+        StartCoroutine(TitleUIManager.Instance.TransitionToPlayGame());
     }
 
     public void QuitGame()
