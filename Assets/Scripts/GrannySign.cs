@@ -13,7 +13,7 @@ public class GrannySign : MonoBehaviour, ISign
         "UGH! A stray cat!",
         "Listen here you mangey cat...",
         "You better not go near my prized petuinas, they won FIRST PLACE at the state fair!",
-        "Well, if you're not going to back away, I'LL MAKE YOU GET AWAY.",
+        "Well, if you're not going to back away, I'LL MAKE YOU!",
     };
 
     public Action dialogCloseAction { get; set; }
