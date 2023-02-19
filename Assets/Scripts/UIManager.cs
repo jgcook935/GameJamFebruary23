@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -64,6 +65,11 @@ public class UIManager : MonoBehaviour
 
     public IEnumerator TransitionToOverworld()
     {
+        if (SceneManager.GetActiveScene().buildIndex != 1)
+        {
+            ChangeScenesManager.Instance.LoadScene(1);
+        }
+
         arenaCombatUI.GetComponent<CanvasGroup>().alpha = 0;
         arenaCombatUI.GetComponent<CanvasGroup>().interactable = false;
         arenaCombatUI.GetComponent<CanvasGroup>().blocksRaycasts = false;
