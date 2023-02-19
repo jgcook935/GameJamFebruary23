@@ -48,7 +48,7 @@ public class GrannySign : MonoBehaviour, ISign
                         new Attack
                         {
                             Name = "Broom",
-                            DamageAmount = 9
+                            DamageAmount = 7
                         },
                         null
                         },
