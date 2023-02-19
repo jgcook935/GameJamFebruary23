@@ -13,7 +13,12 @@ public class DogSign1 : MonoBehaviour, ISign
 
     public List<string> text { get; set; } = new List<string>
     {
-        "Hey there, puss!", "Looks like I'm the new tenant around here. You better scram!"
+        "Hey there, puss!",
+        "It's getting pretty crowded around here with the both of us don't ya think?!",
+        "The humans haven't even played with you once since they brought me home.",
+        "I get to sleep in the bed and I get all the best treats, you just get ignored.",
+        "I think its time you left and didn't come back, the humans won't even notice!",
+        "I'll even show you the way out!"
     };
 
     public Action dialogCloseAction { get; set; }
