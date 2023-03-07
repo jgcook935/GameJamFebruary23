@@ -82,6 +82,7 @@ public class DinkScene1 : MonoBehaviour, ISign
 
         yield return new WaitForSeconds(3);
         CharacterManager.Instance.player.Enabled = true;
+        Destroy(GetComponent<Sign>().gameObject);
         foreach (Transform child in transform)
         {
             Destroy(child.gameObject);
