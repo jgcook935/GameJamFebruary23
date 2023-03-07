@@ -2215,12 +2215,16 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2755694540910466366, guid: 557ad0388504b784188dedf0a4034eb2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 6.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 2755694540910466366, guid: 557ad0388504b784188dedf0a4034eb2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 23.72
       objectReference: {fileID: 0}
     - target: {fileID: 2755694540910466366, guid: 557ad0388504b784188dedf0a4034eb2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.29
+      value: 0.44
       objectReference: {fileID: 0}
     - target: {fileID: 2755694540910466366, guid: 557ad0388504b784188dedf0a4034eb2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2610,6 +2614,7 @@ MonoBehaviour:
   arenaTheme: {fileID: 8300000, guid: 520112e98642748388540b4417bbfd9d, type: 3}
   arenaThemeTransition: {fileID: 8300000, guid: 47d070e27305a4568b3e33c3b92dbcfe, type: 3}
   notification: {fileID: 8300000, guid: dcdfadb5ea5ae46e28f393192f9aa4aa, type: 3}
+  gate: {fileID: 8300000, guid: 77c8b236f39422d44b284ebb8bb9f6f5, type: 3}
 --- !u!82 &1396541263
 AudioSource:
   m_ObjectHideFlags: 0

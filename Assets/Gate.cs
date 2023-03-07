@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Gate : MonoBehaviour
@@ -13,8 +14,17 @@ public class Gate : MonoBehaviour
         {
             foreach (Transform child in transform)
             {
-                Destroy(child.gameObject);
+                destroyedChildren = true;
+                StartCoroutine(DestroyGates(child));
             }
         }
     }
+
+    IEnumerator DestroyGates(Transform child)
+    {
+        yield return new WaitForSeconds(7f);
+        AudioManager.Instance.PlayGateSound();
+        Destroy(child.gameObject);
+    }
+
 }

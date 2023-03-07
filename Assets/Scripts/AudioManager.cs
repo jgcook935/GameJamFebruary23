@@ -9,6 +9,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioClip arenaTheme;
     [SerializeField] AudioClip arenaThemeTransition;
     [SerializeField] AudioClip notification;
+    [SerializeField] AudioClip gate;
 
     private float overworldThemePlaybackhead = 0f;
 
@@ -70,5 +71,11 @@ public class AudioManager : MonoBehaviour
     public void PlayNotificationSound()
     {
         source.PlayOneShot(notification);
+    }
+
+        public void PlayGateSound()
+    {
+        source.volume = .25f;
+        source.PlayOneShot(gate);
     }
 }
