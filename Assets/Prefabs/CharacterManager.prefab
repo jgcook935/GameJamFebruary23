@@ -46,8 +46,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 5665976625247048240, guid: 880ee0ab3c9e08a43bb93281c6ea0a01, type: 3}
   mainCameraPrefab: {fileID: 8348498308395410090, guid: 3ee4c685ecab95f44ac0f398bd323e7b, type: 3}
+  localSprite: {fileID: 0}
+  localHurtSounds: []
+  healthSound: {fileID: 0}
+  defenseSound: {fileID: 0}
   player: {fileID: 0}
   playerConfigSO: {fileID: 11400000, guid: 306f6529ad0eb484aaee681e61dbe1d3, type: 2}
+  catLevelUpSO: {fileID: 11400000, guid: ffb74c94f3b30b145aaea79cc0ac6811, type: 2}
 --- !u!114 &4219610377103535762
 MonoBehaviour:
   m_ObjectHideFlags: 0

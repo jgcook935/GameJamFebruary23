@@ -2008,6 +2008,7 @@ MonoBehaviour:
   arenaTheme: {fileID: 8300000, guid: 520112e98642748388540b4417bbfd9d, type: 3}
   arenaThemeTransition: {fileID: 8300000, guid: 47d070e27305a4568b3e33c3b92dbcfe, type: 3}
   notification: {fileID: 8300000, guid: dcdfadb5ea5ae46e28f393192f9aa4aa, type: 3}
+  gate: {fileID: 0}
 --- !u!82 &1396541263
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2993,6 +2994,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1548443323431105687, guid: 557a3ec283cc54103b3baed76f562440, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1548443324468520478, guid: 557a3ec283cc54103b3baed76f562440, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5879979246352057072, guid: 557a3ec283cc54103b3baed76f562440, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5879979246816026869, guid: 557a3ec283cc54103b3baed76f562440, type: 3}
       propertyPath: m_Name
       value: OverworldUI
@@ -10017,12 +10030,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d26b97e9ee298413fb0d10f8ca5f00bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetHP: 0
+  maxHP: 10
   NameText: {fileID: 6690734345539936163}
   LevelText: {fileID: 6690734345545747415}
   CurrentHealthText: {fileID: 6690734345824244998}
   MaxHealthText: {fileID: 6690734345858145664}
   HealthSlider: {fileID: 6690734346337250685}
   profileImage: {fileID: 1067109834}
+  hpColorImage: {fileID: 0}
 --- !u!224 &6690734344794186946
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10965,12 +10981,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b59fb0942b804a58af17d7669b00687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetHP: 0
+  maxHP: 10
   NameText: {fileID: 8149151215777588352}
   LevelText: {fileID: 8149151215787634932}
   CurrentHealthText: {fileID: 8149151215493082661}
   MaxHealthText: {fileID: 8149151215525373603}
   HealthSlider: {fileID: 8149151215064421982}
   profileImage: {fileID: 531856931}
+  hpColorImage: {fileID: 0}
 --- !u!222 &6690734345539936162
 CanvasRenderer:
   m_ObjectHideFlags: 0

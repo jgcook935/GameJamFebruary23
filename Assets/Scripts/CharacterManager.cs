@@ -25,6 +25,7 @@ public class CharacterManager : MonoBehaviour
     private CameraController cameraController;
     [HideInInspector] public PlayerMovement player;
     public PlayerConfigSO playerConfigSO;
+    public BoolSO catLevelUpSO;
 
     public void SetControlsEnabled(bool enabled)
     {
@@ -35,32 +36,112 @@ public class CharacterManager : MonoBehaviour
     void Awake()
     {
         player = Instantiate(playerPrefab, transform).GetComponent<PlayerMovement>();
-        if (playerConfigSO.Value == null)
+        if (playerConfigSO.Value == null && catLevelUpSO.Value == false)
         {
             // init the playerConfig with some default values
             Debug.Log("PLAYER NOT INITIALIZED. LOADING DEFAULTS.");
-            playerConfigSO.Value = new PlayerConfig
+            SetLevel1();
+        }
+        else if (playerConfigSO.Value == null && catLevelUpSO.Value == true)
+        {
+            Debug.Log("PLAYER NOT INITIALIZED. LOADING LEVEL 2.");
+            SetLevel2();
+        }
+        else
+        {
+            // load any dependent stuff from the config SO
+            Debug.Log("PLAYER IS ALREADY INITIALIZED.");
+        }
+
+        var sceneLocation = ChangeScenesManager.Instance.GetSceneLocation();
+        if (sceneLocation != Vector2.zero) player.transform.position = sceneLocation;
+    }
+
+    void SetLevel1()
+    {
+        playerConfigSO.Value = new PlayerConfig
+        {
+            currentHealth = 10f,
+            maxHealth = 10f,
+            speed = 1f,
+            level = 1,
+            name = "Skully",
+            sprite = localSprite,
+            hurtSounds = localHurtSounds,
+            abilities = new PlayerAbilities
             {
-                currentHealth = 10f,
-                maxHealth = 10f,
-                speed = 1f,
-                level = 1,
-                name = "Skully",
-                sprite = localSprite,
-                hurtSounds = localHurtSounds,
-                abilities = new PlayerAbilities
-                {
-                    Attacks = new Attack[2]
-                    {
+                Attacks = new Attack[2]
+                            {
+                                new Attack
+                                {
+                                    Name = "Claw",
+                                    DamageAmount = 5f
+                                },
+                                null
+                            },
+                Defenses = new Defense[2]
+                            {
+                                new Defense
+                                {
+                                    Name = "Roll",
+                                    DefenseAmount = 3f,
+                                    Sounds = new AudioClip[]
+                                    {
+                                        defenseSound
+                                    }
+                                },
+                                null
+                            }
+            },
+            inventory = new PlayerInventory
+            {
+                HealthBoosts = new HealthBoost[2]
+                            {
+                                new HealthBoost
+                                {
+                                    Name = "Catnip",
+                                    HealthAmount = 2f,
+                                    Sound = healthSound
+                                },
+                                null
+                            },
+                Weapons = new Weapon[2]
+                            {
+                                null,
+                                null
+                            }
+            }
+        };
+    }
+
+    public void SetLevel2()
+    {
+        playerConfigSO.Value = new PlayerConfig
+        {
+            currentHealth = 15f,
+            maxHealth = 15f,
+            speed = 1f,
+            level = 2,
+            name = "Skully",
+            sprite = localSprite,
+            hurtSounds = localHurtSounds,
+            abilities = new PlayerAbilities
+            {
+                Attacks = new Attack[2]
+        {
                         new Attack
                         {
                             Name = "Claw",
                             DamageAmount = 5f
                         },
-                        null
-                    },
-                    Defenses = new Defense[2]
-                    {
+                        new Attack
+                        {
+                            Name = "Bite",
+                            DamageAmount = 8f
+                        }
+        },
+                Defenses = new Defense[2]
+        {
                         new Defense
                         {
                             Name = "Roll",
@@ -71,12 +152,12 @@ public class CharacterManager : MonoBehaviour
                             }
                         },
                         null
-                    }
-                },
-                inventory = new PlayerInventory
-                {
-                    HealthBoosts = new HealthBoost[2]
-                    {
+        }
+            },
+            inventory = new PlayerInventory
+            {
+                HealthBoosts = new HealthBoost[2]
+        {
                         new HealthBoost
                         {
                             Name = "Catnip",
@@ -84,22 +165,13 @@ public class CharacterManager : MonoBehaviour
                             Sound = healthSound
                         },
                         null
-                    },
-                    Weapons = new Weapon[2]
-                    {
+        },
+                Weapons = new Weapon[2]
+        {
                         null,
                         null
-                    }
-                }
-            };
         }
-        else
-        {
-            // load any dependent stuff from the config SO
-            Debug.Log("PLAYER IS ALREADY INITIALIZED.");
-        }
-
-        var sceneLocation = ChangeScenesManager.Instance.GetSceneLocation();
-        if (sceneLocation != Vector2.zero) player.transform.position = sceneLocation;
+            }
+        };
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    const float DEFAULT_VOLUME = .65f;
     AudioSource source => GetComponent<AudioSource>();
     [SerializeField] AudioClip overWorldTheme;
     [SerializeField] AudioClip arenaTheme;
@@ -26,7 +27,7 @@ public class AudioManager : MonoBehaviour
     private void Awake()
     {
         source.clip = overWorldTheme;
-        source.volume = .65f;
+        source.volume = DEFAULT_VOLUME;
         source.Play();
     }
 
@@ -57,7 +58,7 @@ public class AudioManager : MonoBehaviour
 
     public void TransitionToOverworld()
     {
-        source.volume = .65f;
+        source.volume = DEFAULT_VOLUME;
         source.time = overworldThemePlaybackhead;
         source.Play();
     }
@@ -73,9 +74,16 @@ public class AudioManager : MonoBehaviour
         source.PlayOneShot(notification);
     }
 
-        public void PlayGateSound()
+    public void PlayGateSound()
     {
-        source.volume = .25f;
+        source.volume = .1f;
         source.PlayOneShot(gate);
+        StartCoroutine(ReturnToDefaultVolume());
+    }
+
+    IEnumerator ReturnToDefaultVolume(float seconds = 3f)
+    {
+        yield return new WaitForSeconds(seconds);
+        source.volume = DEFAULT_VOLUME;
     }
 }
