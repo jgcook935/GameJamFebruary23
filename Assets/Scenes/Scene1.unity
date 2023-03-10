@@ -4600,6 +4600,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d26b97e9ee298413fb0d10f8ca5f00bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetHP: 0
+  maxHP: 10
   NameText: {fileID: 6690734345539936163}
   LevelText: {fileID: 6690734345545747415}
   CurrentHealthText: {fileID: 6690734345824244998}
@@ -5549,6 +5551,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b59fb0942b804a58af17d7669b00687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetHP: 0
+  maxHP: 10
   NameText: {fileID: 8149151215777588352}
   LevelText: {fileID: 8149151215787634932}
   CurrentHealthText: {fileID: 8149151215493082661}

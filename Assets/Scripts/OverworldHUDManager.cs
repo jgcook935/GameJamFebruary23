@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.UI.CanvasScaler;
 
-public class OverworldHUDManager : MonoBehaviour
+public class OverworldHUDManager : AbstractSlider
 {
     [SerializeField] Slider hpSlider;
     [SerializeField] Text currentHealthText;
@@ -33,8 +33,14 @@ public class OverworldHUDManager : MonoBehaviour
         UpdateStats();
     }
 
+    private void Update()
+    {
+        UpdateSlider(hpSlider, hpColorImage);
+    }
+
     public void Init()
     {
+        hpSlider.value = ArenaCombatManager.Instance.PlayerCurrentHealth / ArenaCombatManager.Instance.PlayerMaxHealth;
         UpdateStats();
         ArenaCombatManager.Instance.onPlayerHealthChanged += UpdateStats;
     }
@@ -46,14 +52,10 @@ public class OverworldHUDManager : MonoBehaviour
 
     public void UpdateStats()
     {
+        maxHP = ArenaCombatManager.Instance.PlayerMaxHealth;
+        targetHP = ArenaCombatManager.Instance.PlayerCurrentHealth < 0 ? 0 : ArenaCombatManager.Instance.PlayerCurrentHealth / maxHP;
         currentHealthText.text = ArenaCombatManager.Instance.PlayerCurrentHealth < 0 ? "0" : ArenaCombatManager.Instance.PlayerCurrentHealth.ToString();
-        maxHealthText.text = ArenaCombatManager.Instance.PlayerMaxHealth.ToString();
-        hpSlider.value = ArenaCombatManager.Instance.PlayerCurrentHealth < 0 ? 0 : ArenaCombatManager.Instance.PlayerCurrentHealth / ArenaCombatManager.Instance.PlayerMaxHealth;
-        if(ArenaCombatManager.Instance.PlayerCurrentHealth < 0.5f * ArenaCombatManager.Instance.PlayerMaxHealth)
-        {
-            hpColorImage.color = new Color(1, 0, 0, 150f/255f);
-        } 
-        else hpColorImage.color = new Color(29f / 255f, 168f / 255f, 6f / 255f, 150f / 255f);
+        maxHealthText.text = maxHP.ToString();
     }
 
     public IEnumerator ShowHealthFullMessage()

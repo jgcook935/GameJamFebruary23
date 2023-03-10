@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HUDManager : MonoBehaviour
+public class HUDManager : AbstractSlider
 {
     [SerializeField] Text NameText;
     [SerializeField] Text LevelText;
@@ -19,8 +19,14 @@ public class HUDManager : MonoBehaviour
         ArenaCombatManager.Instance.onBattleEnd += Dispose; // not sure if i even need this...
     }
 
+    private void Update()
+    {
+        UpdateSlider(HealthSlider, hpColorImage);
+    }
+
     public void Init()
     {
+        HealthSlider.value = ArenaCombatManager.Instance.PlayerCurrentHealth / ArenaCombatManager.Instance.PlayerMaxHealth;
         UpdateStats();
         ArenaCombatManager.Instance.onPlayerHealthChanged += UpdateStats;
     }
@@ -32,16 +38,12 @@ public class HUDManager : MonoBehaviour
 
     public void UpdateStats()
     {
+        maxHP = ArenaCombatManager.Instance.PlayerMaxHealth;
+        targetHP = ArenaCombatManager.Instance.PlayerCurrentHealth < 0 ? 0 : ArenaCombatManager.Instance.PlayerCurrentHealth / maxHP;
         profileImage.sprite = ArenaCombatManager.Instance.PlayerSprite;
         NameText.text = ArenaCombatManager.Instance.PlayerName;
         LevelText.text = $"Lvl: {ArenaCombatManager.Instance.PlayerLevel.ToString()}";
         CurrentHealthText.text = ArenaCombatManager.Instance.PlayerCurrentHealth < 0 ? "0" : ArenaCombatManager.Instance.PlayerCurrentHealth.ToString();
-        MaxHealthText.text = ArenaCombatManager.Instance.PlayerMaxHealth.ToString();
-        HealthSlider.value = ArenaCombatManager.Instance.PlayerCurrentHealth < 0 ? 0 : ArenaCombatManager.Instance.PlayerCurrentHealth / ArenaCombatManager.Instance.PlayerMaxHealth;
-        if(ArenaCombatManager.Instance.PlayerCurrentHealth < 0.5f * ArenaCombatManager.Instance.PlayerMaxHealth)
-        {
-            hpColorImage.color = Color.red;
-        } 
-        else hpColorImage.color = new Color(29f / 255f, 168f / 255f, 6f / 255f);
+        MaxHealthText.text = maxHP.ToString();
     }
 }
