@@ -135,6 +135,8 @@ MonoBehaviour:
   hpSlider: {fileID: 5879979247252620510}
   currentHealthText: {fileID: 5879979247568314075}
   maxHealthText: {fileID: 5879979246788788895}
+  healthFullMessage: {fileID: 0}
+  hpColorImage: {fileID: 5879979247993797054}
 --- !u!1 &5879979246423095463
 GameObject:
   m_ObjectHideFlags: 0

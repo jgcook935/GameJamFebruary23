@@ -4606,6 +4606,7 @@ MonoBehaviour:
   MaxHealthText: {fileID: 6690734345858145664}
   HealthSlider: {fileID: 6690734346337250685}
   profileImage: {fileID: 1067109834}
+  hpColorImage: {fileID: 6690734344741159478}
 --- !u!224 &6690734344794186946
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5554,6 +5555,7 @@ MonoBehaviour:
   MaxHealthText: {fileID: 8149151215525373603}
   HealthSlider: {fileID: 8149151215064421982}
   profileImage: {fileID: 531856931}
+  hpColorImage: {fileID: 8149151216593139989}
 --- !u!222 &6690734345539936162
 CanvasRenderer:
   m_ObjectHideFlags: 0

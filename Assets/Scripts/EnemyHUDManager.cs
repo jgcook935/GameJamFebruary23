@@ -12,6 +12,7 @@ public class EnemyHUDManager : MonoBehaviour
     [SerializeField] Text MaxHealthText;
     [SerializeField] Slider HealthSlider;
     [SerializeField] Image profileImage;
+    [SerializeField] Image hpColorImage;
 
     private void Awake()
     {
@@ -38,5 +39,10 @@ public class EnemyHUDManager : MonoBehaviour
         CurrentHealthText.text = ArenaCombatManager.Instance.EnemyCurrentHealth < 0 ? "0" : ArenaCombatManager.Instance.EnemyCurrentHealth.ToString();
         MaxHealthText.text = ArenaCombatManager.Instance.EnemyMaxHealth.ToString();
         HealthSlider.value = ArenaCombatManager.Instance.EnemyCurrentHealth < 0 ? 0 : ArenaCombatManager.Instance.EnemyCurrentHealth / 10f;
+        if(ArenaCombatManager.Instance.EnemyCurrentHealth < 0.5f * ArenaCombatManager.Instance.EnemyMaxHealth)
+        {
+            hpColorImage.color = Color.red;
+        } 
+        else hpColorImage.color = new Color(29f / 255f, 168f / 255f, 6f / 255f);
     }
 }

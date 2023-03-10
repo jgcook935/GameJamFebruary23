@@ -11,6 +11,7 @@ public class HUDManager : MonoBehaviour
     [SerializeField] Text MaxHealthText;
     [SerializeField] Slider HealthSlider;
     [SerializeField] Image profileImage;
+    [SerializeField] Image hpColorImage;
 
     private void Awake()
     {
@@ -36,6 +37,11 @@ public class HUDManager : MonoBehaviour
         LevelText.text = $"Lvl: {ArenaCombatManager.Instance.PlayerLevel.ToString()}";
         CurrentHealthText.text = ArenaCombatManager.Instance.PlayerCurrentHealth < 0 ? "0" : ArenaCombatManager.Instance.PlayerCurrentHealth.ToString();
         MaxHealthText.text = ArenaCombatManager.Instance.PlayerMaxHealth.ToString();
-        HealthSlider.value = ArenaCombatManager.Instance.PlayerCurrentHealth < 0 ? 0 : ArenaCombatManager.Instance.PlayerCurrentHealth / 10f;
+        HealthSlider.value = ArenaCombatManager.Instance.PlayerCurrentHealth < 0 ? 0 : ArenaCombatManager.Instance.PlayerCurrentHealth / ArenaCombatManager.Instance.PlayerMaxHealth;
+        if(ArenaCombatManager.Instance.PlayerCurrentHealth < 0.5f * ArenaCombatManager.Instance.PlayerMaxHealth)
+        {
+            hpColorImage.color = Color.red;
+        } 
+        else hpColorImage.color = new Color(29f / 255f, 168f / 255f, 6f / 255f);
     }
 }
