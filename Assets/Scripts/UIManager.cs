@@ -46,6 +46,9 @@ public class UIManager : MonoBehaviour
 
         AudioManager.Instance.PlayTransitionTheme();
 
+        yield return new WaitForSeconds(0.01f);
+        CharacterManager.Instance.player.SetMovementEnabled(false);
+
         yield return new WaitForSeconds(2.857f);
 
         crossfadeAnimator.SetTrigger("End");

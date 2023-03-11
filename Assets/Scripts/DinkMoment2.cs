@@ -57,7 +57,7 @@ public class DinkMoment2 : MonoBehaviour, ISign
 
     public void TriggerMoment()
     {
-        CharacterManager.Instance.player.Enabled = false;
+        CharacterManager.Instance.player.SetMovementEnabled(false);
         StartCoroutine(Exclamation());
     }
 
@@ -84,9 +84,9 @@ public class DinkMoment2 : MonoBehaviour, ISign
     IEnumerator PlayEnd()
     {
         ClickManager.Instance.SetClicksEnabled(false);
-        CharacterManager.Instance.player.Enabled = false;
+        yield return new WaitForSeconds(0.01f);
+        CharacterManager.Instance.player.SetMovementEnabled(false);
         yield return new WaitForSeconds(1);
-        CharacterManager.Instance.player.Enabled = false;
         AudioManager.Instance.LeaveOverWorld();
         UIManager.Instance.crossfadeAnimator.SetTrigger("Start");
         credits.SetActive(true);

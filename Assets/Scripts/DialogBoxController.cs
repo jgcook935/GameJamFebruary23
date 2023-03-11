@@ -28,7 +28,7 @@ public class DialogBoxController : MonoBehaviour, IClickable
     void Awake()
     {
         isOpen = true;
-        CharacterManager.Instance.SetControlsEnabled(false);
+        CharacterManager.Instance.player.SetMovementEnabled(false);
     }
 
     // i tried having the paper sound play when the first box opens, but we tend to do other sounds when it opens so i think it's fine to just have page turning make a sound
@@ -59,7 +59,7 @@ public class DialogBoxController : MonoBehaviour, IClickable
         {
             AudioManager.Instance.PlayRandomPaperSound();
             //animator.SetTrigger("DialogueClosed");
-            CharacterManager.Instance.SetControlsEnabled(true);
+            CharacterManager.Instance.player.SetMovementEnabled(true);
             GameObject.Destroy(this.gameObject);
         }
         else if (isOpen && (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) && textIndex < text.Count)
@@ -74,7 +74,7 @@ public class DialogBoxController : MonoBehaviour, IClickable
             AudioManager.Instance.PlayRandomPaperSound();
             //animator.SetTrigger("DialogueClosed");
             this.DialogCloseAction?.Invoke();
-            CharacterManager.Instance.SetControlsEnabled(true);
+            CharacterManager.Instance.player.SetMovementEnabled(true);
             GameObject.Destroy(this.gameObject);
         }
     }

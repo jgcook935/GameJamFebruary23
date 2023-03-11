@@ -50,11 +50,14 @@ public class SomeCat : MonoBehaviour, ISign
 
     IEnumerator DoStuff()
     {
-        AudioManager.Instance.PlayerLevelUpSound();
-        CharacterManager.Instance.SetLevel2();
-        OverworldHUDManager.Instance.UpdateStats();
-        ArenaCombatManager.Instance.onPlayerHealthChanged?.Invoke();
-        catTalkedSO.Value = true;
+        if (!catTalkedSO.Value)
+        {
+            AudioManager.Instance.PlayerLevelUpSound();
+            CharacterManager.Instance.SetLevel2();
+            OverworldHUDManager.Instance.UpdateStats();
+            ArenaCombatManager.Instance.onPlayerHealthChanged?.Invoke();
+            catTalkedSO.Value = true;
+        }
         yield return new WaitForSeconds(1);
     }
 }

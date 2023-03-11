@@ -45,7 +45,7 @@ public class DinkScene1 : MonoBehaviour, ISign
     public void TriggerMoment()
     {
         doneDinkScene.Value = true;
-        CharacterManager.Instance.player.Enabled = false;
+        CharacterManager.Instance.player.SetMovementEnabled(false);
         StartCoroutine(Exclamation());
     }
 
@@ -71,9 +71,9 @@ public class DinkScene1 : MonoBehaviour, ISign
 
     IEnumerator WalkAway()
     {
-        CharacterManager.Instance.player.Enabled = false;
+        yield return new WaitForSeconds(0.01f);
+        CharacterManager.Instance.player.SetMovementEnabled(false);
         yield return new WaitForSeconds(1);
-        CharacterManager.Instance.player.Enabled = false;
         // set destination
         destinationSetter1.enabled = true;
         destinationSetter2.enabled = true;
@@ -81,7 +81,7 @@ public class DinkScene1 : MonoBehaviour, ISign
         destinationSetter2.target = dinkDestination;
 
         yield return new WaitForSeconds(3);
-        CharacterManager.Instance.player.Enabled = true;
+        CharacterManager.Instance.player.SetMovementEnabled(true);
         Destroy(GetComponent<Sign>().gameObject);
         foreach (Transform child in transform)
         {

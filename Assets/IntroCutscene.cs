@@ -8,7 +8,7 @@ public class IntroCutscene : MonoBehaviour
 
     void Start()
     {
-        CharacterManager.Instance.player.Enabled = false;
+        CharacterManager.Instance.player.SetMovementEnabled(false);
         moment.enabled = false;
         StartCoroutine(IntroStuff());
     }

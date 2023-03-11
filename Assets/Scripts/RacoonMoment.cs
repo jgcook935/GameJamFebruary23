@@ -40,7 +40,7 @@ public class RacoonMoment : MonoBehaviour
     public void TriggerMoment()
     {
         racoonTalked.Value = true;
-        CharacterManager.Instance.player.Enabled = false;
+        CharacterManager.Instance.player.SetMovementEnabled(false);
         StartCoroutine(Exclamation());
     }
 

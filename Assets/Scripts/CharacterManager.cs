@@ -27,12 +27,6 @@ public class CharacterManager : MonoBehaviour
     public PlayerConfigSO playerConfigSO;
     public BoolSO catLevelUpSO;
 
-    public void SetControlsEnabled(bool enabled)
-    {
-        Debug.Log($"SetMovementEnabled is now set to {enabled}");
-        player.SetMovementEnabled(enabled);
-    }
-
     void Awake()
     {
         player = Instantiate(playerPrefab, transform).GetComponent<PlayerMovement>();
