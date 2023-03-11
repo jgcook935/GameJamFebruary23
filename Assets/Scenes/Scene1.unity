@@ -3527,6 +3527,16 @@ MonoBehaviour:
   arenaThemeTransition: {fileID: 8300000, guid: 47d070e27305a4568b3e33c3b92dbcfe, type: 3}
   notification: {fileID: 8300000, guid: dcdfadb5ea5ae46e28f393192f9aa4aa, type: 3}
   gate: {fileID: 8300000, guid: 77c8b236f39422d44b284ebb8bb9f6f5, type: 3}
+  levelUp: {fileID: 8300000, guid: 31152c6f2a4be8f43a60752ff6d7e49e, type: 3}
+  paperClips:
+  - {fileID: 8300000, guid: 2a862d4c01863c14880a86502499275e, type: 3}
+  - {fileID: 8300000, guid: 91f20caf38b20b345bae1f78e650f9f5, type: 3}
+  - {fileID: 8300000, guid: 5f582e2515c4ff542860ffddbf4d6b54, type: 3}
+  - {fileID: 8300000, guid: c5440ff96304ffe4b941381012e7df39, type: 3}
+  - {fileID: 8300000, guid: 27e3516150c8afa4ba373b7b4bae52b8, type: 3}
+  - {fileID: 8300000, guid: 8ed5cae5166d4834e954c2cfd1adb952, type: 3}
+  - {fileID: 8300000, guid: f479232b71223dc41a10ebc13a6c65e0, type: 3}
+  - {fileID: 8300000, guid: b9ecd5901bdbc7f468889da67f6856f8, type: 3}
 --- !u!82 &1396541263
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5114,6 +5124,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 661225321, guid: fd4f37285ab62de498ebd5580508862c, type: 3}
+      propertyPath: catTalkedSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 443ed91b72abbd044939e4a79a3c760e, type: 2}
     - target: {fileID: 5665976625247048234, guid: fd4f37285ab62de498ebd5580508862c, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -5158,6 +5172,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5665976625247048237, guid: fd4f37285ab62de498ebd5580508862c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 4560374083194176582, guid: ddc5513a142b28c47a6fb0c5b8ef4920, type: 3}
     - target: {fileID: 5665976625247048237, guid: fd4f37285ab62de498ebd5580508862c, type: 3}
       propertyPath: m_Color.b
       value: 1

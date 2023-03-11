@@ -11,6 +11,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioClip arenaThemeTransition;
     [SerializeField] AudioClip notification;
     [SerializeField] AudioClip gate;
+    [SerializeField] AudioClip levelUp;
+    [SerializeField] AudioClip[] paperClips;
 
     private float overworldThemePlaybackhead = 0f;
 
@@ -80,6 +82,13 @@ public class AudioManager : MonoBehaviour
         source.PlayOneShot(gate);
         StartCoroutine(ReturnToDefaultVolume());
     }
+
+    public void PlayerLevelUpSound()
+    {
+        source.PlayOneShot(levelUp);
+    }
+
+    public void PlayRandomPaperSound() => source.PlayOneShot(paperClips[Random.Range(0, 7)]);
 
     IEnumerator ReturnToDefaultVolume(float seconds = 0.75f)
     {

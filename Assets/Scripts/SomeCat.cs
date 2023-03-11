@@ -6,6 +6,8 @@ using System;
 
 public class SomeCat : MonoBehaviour, ISign
 {
+    [SerializeField] BoolSO catTalkedSO;
+    private bool flippedDialogue = false;
 
     public List<string> text { get; set; } = new List<string>
     {
@@ -32,21 +34,27 @@ public class SomeCat : MonoBehaviour, ISign
         dialogCloseAction += () => StartCoroutine(DoStuff());
     }
 
-    private void SetVictoryDialogCloseAction()
-    {
-        dialogCloseAction = () => { };
-    }
-
     void Awake()
     {
         SetDialogCloseAction();
     }
 
+    void Update()
+    {
+        if (catTalkedSO.Value && !flippedDialogue)
+        {
+            text = text2;
+            flippedDialogue = true;
+        }
+    }
+
     IEnumerator DoStuff()
     {
+        AudioManager.Instance.PlayerLevelUpSound();
         CharacterManager.Instance.SetLevel2();
         OverworldHUDManager.Instance.UpdateStats();
         ArenaCombatManager.Instance.onPlayerHealthChanged?.Invoke();
+        catTalkedSO.Value = true;
         yield return new WaitForSeconds(1);
     }
 }
