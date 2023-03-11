@@ -1755,9 +1755,17 @@ MonoBehaviour:
   arenaTheme: {fileID: 8300000, guid: 520112e98642748388540b4417bbfd9d, type: 3}
   arenaThemeTransition: {fileID: 8300000, guid: 47d070e27305a4568b3e33c3b92dbcfe, type: 3}
   notification: {fileID: 8300000, guid: dcdfadb5ea5ae46e28f393192f9aa4aa, type: 3}
-  gate: {fileID: 0}
-  levelUp: {fileID: 0}
-  paperClips: []
+  gate: {fileID: 8300000, guid: 77c8b236f39422d44b284ebb8bb9f6f5, type: 3}
+  levelUp: {fileID: 8300000, guid: 31152c6f2a4be8f43a60752ff6d7e49e, type: 3}
+  paperClips:
+  - {fileID: 8300000, guid: 2a862d4c01863c14880a86502499275e, type: 3}
+  - {fileID: 8300000, guid: 91f20caf38b20b345bae1f78e650f9f5, type: 3}
+  - {fileID: 8300000, guid: 5f582e2515c4ff542860ffddbf4d6b54, type: 3}
+  - {fileID: 8300000, guid: c5440ff96304ffe4b941381012e7df39, type: 3}
+  - {fileID: 8300000, guid: 27e3516150c8afa4ba373b7b4bae52b8, type: 3}
+  - {fileID: 8300000, guid: 8ed5cae5166d4834e954c2cfd1adb952, type: 3}
+  - {fileID: 8300000, guid: f479232b71223dc41a10ebc13a6c65e0, type: 3}
+  - {fileID: 8300000, guid: b9ecd5901bdbc7f468889da67f6856f8, type: 3}
 --- !u!82 &1396541263
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6617,7 +6625,7 @@ MonoBehaviour:
   MaxHealthText: {fileID: 6690734345858145664}
   HealthSlider: {fileID: 6690734346337250685}
   profileImage: {fileID: 1067109834}
-  hpColorImage: {fileID: 0}
+  hpColorImage: {fileID: 6690734344741159478}
 --- !u!224 &6690734344794186946
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7568,7 +7576,7 @@ MonoBehaviour:
   MaxHealthText: {fileID: 8149151215525373603}
   HealthSlider: {fileID: 8149151215064421982}
   profileImage: {fileID: 531856931}
-  hpColorImage: {fileID: 0}
+  hpColorImage: {fileID: 8149151216593139989}
 --- !u!222 &6690734345539936162
 CanvasRenderer:
   m_ObjectHideFlags: 0
