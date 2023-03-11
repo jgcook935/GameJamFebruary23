@@ -57,6 +57,7 @@ public class DinkMoment2 : MonoBehaviour, ISign
 
     public void TriggerMoment()
     {
+        ClickManager.Instance.SetClicksEnabled(false);
         CharacterManager.Instance.player.SetMovementEnabled(false);
         StartCoroutine(Exclamation());
     }

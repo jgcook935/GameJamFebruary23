@@ -45,6 +45,7 @@ public class DinkScene1 : MonoBehaviour, ISign
     public void TriggerMoment()
     {
         doneDinkScene.Value = true;
+        ClickManager.Instance.SetClicksEnabled(false);
         CharacterManager.Instance.player.SetMovementEnabled(false);
         StartCoroutine(Exclamation());
     }
@@ -87,5 +88,6 @@ public class DinkScene1 : MonoBehaviour, ISign
         {
             Destroy(child.gameObject);
         }
+        ClickManager.Instance.SetClicksEnabled(true);
     }
 }
