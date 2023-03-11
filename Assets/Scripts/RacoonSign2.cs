@@ -22,7 +22,7 @@ public class RacoonSign2 : MonoBehaviour, ISign
 
     public List<string> victoryText { get; set; } = new List<string>
     {
-        "Alright, alright, you're a bad cat",
+        "Alright, alright, you're clearly stronger than me. I give up.",
     };
 
     public Action dialogCloseAction { get; set; }
