@@ -11,7 +11,6 @@ public class DinkMoment2 : MonoBehaviour, ISign
     [SerializeField] private SpriteRenderer exclamationSprite;
     [SerializeField] private AIPath aipath;
     [SerializeField] private GameObject dialogueBox;
-    [SerializeField] Animator crossfadeAnimator;
     [SerializeField] GameObject credits;
 
     [SerializeField] AIDestinationSetter destinationSetter1;
@@ -89,7 +88,7 @@ public class DinkMoment2 : MonoBehaviour, ISign
         yield return new WaitForSeconds(1);
         CharacterManager.Instance.player.Enabled = false;
         AudioManager.Instance.LeaveOverWorld();
-        crossfadeAnimator.SetTrigger("Start");
+        UIManager.Instance.crossfadeAnimator.SetTrigger("Start");
         credits.SetActive(true);
         yield return new WaitForSeconds(5);
         // show another text about the end is a new beginning

@@ -119,7 +119,6 @@ GameObject:
   - component: {fileID: 2807100731114694774}
   - component: {fileID: 2807100731114694775}
   - component: {fileID: 2807100731114694772}
-  - component: {fileID: 4274232430196126707}
   - component: {fileID: 8423761101330850047}
   m_Layer: 0
   m_Name: Dink1
@@ -351,20 +350,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f84a93da32f7a492f9a49004fb360e6b, type: 3}
   - {fileID: 8300000, guid: def88d2f0467f4d81aea77aa0c9388bc, type: 3}
   - {fileID: 8300000, guid: 3db6711b1a3c14a3fb4d04e4e5a1a043, type: 3}
---- !u!114 &4274232430196126707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2807100731114694780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45381514b81753f4aa744f0db76560d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  localSprite: {fileID: 21300000, guid: 1ce368b15e51c8948b88f679cb9c67e8, type: 3}
-  localHurtSounds: []
+  onlyWalkDown: 0
 --- !u!82 &8423761101330850047
 AudioSource:
   m_ObjectHideFlags: 0

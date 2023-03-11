@@ -16,7 +16,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] TMP_Text enemyText;
     [SerializeField] CanvasGroup overworldHUD;
 
-    private Animator crossfadeAnimator;
+    public Animator crossfadeAnimator;
 
     private void Awake()
     {
@@ -36,7 +36,7 @@ public class UIManager : MonoBehaviour
 
     public IEnumerator TransitionToArena(BoolSO victorySO)
     {
-        CharacterManager.Instance.player.Enabled = false;
+        CharacterManager.Instance.player.SetMovementEnabled(false);
         ClickManager.Instance.SetClicksEnabled(false);
         vsText.SetActive(true);
         playerText.text = ArenaCombatManager.Instance.PlayerName;
@@ -51,7 +51,7 @@ public class UIManager : MonoBehaviour
         crossfadeAnimator.SetTrigger("End");
 
         vsText.SetActive(false);
-        CharacterManager.Instance.player.Enabled = false;
+        CharacterManager.Instance.player.SetMovementEnabled(false);
         ClickManager.Instance.SetClicksEnabled(false);
         arenaBackground.SetActive(true);
         overworldHUD.alpha = 0;

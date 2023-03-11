@@ -81,7 +81,7 @@ public class AudioManager : MonoBehaviour
         StartCoroutine(ReturnToDefaultVolume());
     }
 
-    IEnumerator ReturnToDefaultVolume(float seconds = 3f)
+    IEnumerator ReturnToDefaultVolume(float seconds = 0.75f)
     {
         yield return new WaitForSeconds(seconds);
         source.volume = DEFAULT_VOLUME;
