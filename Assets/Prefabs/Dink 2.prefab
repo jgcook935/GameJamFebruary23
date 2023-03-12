@@ -457,7 +457,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2807100732107691350}
   - component: {fileID: 2807100732107691368}
-  - component: {fileID: 2807100732107691369}
   m_Layer: 0
   m_Name: DialogueCollider
   m_TagString: Untagged
@@ -505,23 +504,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.72, y: 0.81}
   m_EdgeRadius: 0
---- !u!114 &2807100732107691369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2807100732107691351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7999fe5ac070b84f87c0dfe5b601d30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  exclamationAnimator: {fileID: 2807100731100096048}
-  exclamationSprite: {fileID: 2807100731100096051}
-  aipath: {fileID: 2807100731114694768}
-  racoonTalked: {fileID: 11400000, guid: 3a21ef64b0d0cac4495c6b7b8b11b0c0, type: 2}
-  dialogueBox: {fileID: 8190180490831468477}
 --- !u!1001 &2807100731955422211
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -599,11 +581,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4950bdd7b409e5b4aaa5f40089406f42, type: 3}
---- !u!1 &8190180490831468477 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6295345073201165246, guid: 4950bdd7b409e5b4aaa5f40089406f42, type: 3}
-  m_PrefabInstance: {fileID: 2807100731955422211}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8190180490831468466 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6295345073201165233, guid: 4950bdd7b409e5b4aaa5f40089406f42, type: 3}
